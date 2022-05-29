@@ -174,11 +174,6 @@
 <!--=======================================================================-->
 
 <textarea id='lambda' type='text/hrf' style='display:none'>
-</textarea>
-
-<!--=======================================================================-->
-
-<textarea id='library' type='text/hrf' style='display:none'>
 
 isevent(cs151)
 isevent(cs157)
@@ -191,6 +186,12 @@ isroom(g300)
 istime(morning)
 istime(afternoon)
 istime(evening)
+</textarea>
+
+<!--=======================================================================-->
+
+<textarea id='library' type='text/hrf' style='display:none'>
+
 
 select(event(R,T),E) :: distinct(E,unknown) ==> room(E,R) & time(E,T)
 select(event(R,T),E) :: room(O,R) & time(O,T) ==> ~room(O,R) & ~time(O,T)

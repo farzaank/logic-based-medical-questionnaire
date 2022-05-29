@@ -1,0 +1,70 @@
+<html>
+
+<!--=======================================================================-->
+
+<head>
+    <script type='text/javascript' src='http://epilog.stanford.edu/javascript/epilog.js'></script>
+    <script type='text/javascript' src='http://minimal.stanford.edu/worksheets/javascript/worksheets.js'></script>
+</head>
+
+<!--=======================================================================-->
+
+<body onload='initialize()'>
+  <center>
+
+<!--=======================================================================-->
+<h2>General Questions</h2>
+
+<div class="column">
+
+<div class="row">
+<label>Have you had any of the following?</label>
+<select id='specificcondition(gi)' style='width:80' onchange='modselector(this)' >
+  <option value='unknown'></option>
+  <option>GERD</option>
+  <option>IBS</option>
+  <option>ARFID</option>
+</select>
+</div>
+<div class="row">
+
+<label>Have you had any of the following?</label>
+<select id='specificcondition(psych)' style='width:80' onchange='modselector(this)'>
+  <option value='unknown'></option>
+  <option>Depression</option>
+  <option>Anxiety</option>
+  <option>Other</option>
+</select>
+</div>
+</div>
+
+<br/>
+<br/>
+
+<!--=======================================================================-->
+
+<textarea id='lambda' type='text/hrf' style='display:none'>
+
+iscondition(GERD)
+iscondition(IBS)
+iscondition(ARFID)
+
+issymptom(cough)
+
+</textarea>
+
+<!--=======================================================================-->
+
+<textarea id='library' type='text/hrf' style='display:none'>
+
+
+</textarea>
+
+<!--=======================================================================-->
+
+  </center>
+</body>
+
+<!--=======================================================================-->
+
+</html>
