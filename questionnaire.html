@@ -1,70 +1,269 @@
+
 <html>
-
-<!--=======================================================================-->
-
 <head>
-    <script type='text/javascript' src='http://epilog.stanford.edu/javascript/epilog.js'></script>
-    <script type='text/javascript' src='http://minimal.stanford.edu/worksheets/javascript/worksheets.js'></script>
-</head>
+  <title></title>
+  <meta charset="UTF-8">
+  <style name="worksheet" type="text/css">p{margin:0px;padding:0px;}
+  </style>
+  <script src="http://epilog.stanford.edu//epilog/javascript/epilog.js"></script>
+  <script src="http://epilog.stanford.edu//worksheets/javascript/worksheets.js"></script>
+        <script src="http://epilog.stanford.edu//worksheets/widgets/charts.js"></script></head>
+<body onload="initialize()">
+<table border="3" cellpadding="1" cellspacing="0" style="width: 840px; border-collapse: collapse; margin: 0px auto; font-family: HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; border-radius: 5px; box-shadow: black 0px 0px 3px 3px;">
+  <tbody>
 
-<!--=======================================================================-->
+    <tr>
+      
+    <td colspan="4"><img src="header.png" alt="Vaden Health Services" width="375" height="50">
+    </tr>
+    <tr>
+      <td colspan="4"><span style="font-size:20px;"><strong>&nbsp;Patient Intake Form&nbsp;</strong>
+    </tr>
 
-<body onload='initialize()'>
-  <center>
+    <tr>
+      <td colspan="4" style="color: black;"><em>&nbsp;Which of the following have you experienced recently?</em></td>
+    </tr>
+    <tr>
+      <td colspan="4" id="c1" style="color: red;"><em>&nbsp; - Please select at least one experience</em></td>
+    </tr>
+    <!--tr>
+      <td colspan="4" style="padding-top: 10px; padding-bottom: 10px;">Quarters: <span style="background-color:rgba(239, 72, 54, 0.3);">&nbsp; &nbsp;&nbsp;</span> autumn &nbsp;<span style="background-color:rgba(34, 167, 240, 0.3);">&nbsp; &nbsp;&nbsp;</span> winter &nbsp;<span style="background-color:rgba(135, 211, 124, 0.6);">&nbsp; &nbsp;&nbsp;</span> spring</td>
+    </tr-->
+    <tr>
+      <td colspan="4">
+      <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse; margin: 0px auto; font-family: HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">
+        <tbody>
+          <tr>
+            <td id="row(cough)" style="width: 25%; background-color: rgba(239, 72, 54, 0.298039);"><input id="cough" onchange="modcheck(this)" type="checkbox" />&nbsp;Cough</td>
+            <td id="row(depression)" style="width: 25%; background-color: rgba(34, 167, 240, 0.298039);"><input id="depression" onchange="modcheck(this)" type="checkbox" />&nbsp;Depression</td>
+            <td id="row(diarrhea)" style="width: 25%; background-color: rgba(34, 167, 240, 0.298039);"><input id="diarrhea" onchange="modcheck(this)" type="checkbox">&nbsp;Diarrhea</td>
+          </tr>
+          <tr>
+            <td id="row(itch)" style="width: 25%; background-color: rgba(239, 72, 54, 0.298039);"><input id="itch" onchange="modcheck(this)" type="checkbox" />&nbsp;Itch</td>
+            <td id="row(wheeze)" style="width: 25%; background-color: rgba(239, 72, 54, 0.298039);"><input id="wheeze" onchange="modcheck(this)" type="checkbox" />&nbsp;Wheeze</td>
+            <td id="row(fever)" style="width: 25%; background-color: rgba(239, 72, 54, 0.298039);"><input id="fever" onchange="modcheck(this)" type="checkbox" />&nbsp;Fever</td>
+          </tr>
+          <tr>
+            <td id="row(anxiety)" style="background-color: rgba(34, 167, 240, 0.298039);"><input id="anxiety" onchange="modcheck(this)" type="checkbox" />&nbsp;Anxiety</td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr style="vertical-align: top;">
+      <td colspan="4">
+      <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+        <tbody>
+          <tr style="vertical-align: top;">
+            <td>
+              <chart chart-line-color="white" class="chart" widget="chart" style="display: block; box-sizing: border-box; width: 400px; height: 400px; background-color: white; color: black; margin: 0px auto; font-size: 13px; cursor: pointer; font-family: HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; border-radius: 0px; -moz-border-radius: 0px; -webkit-border-radius: 0px;" chart-table="area" chart-type="pie" chart-title="Medical Categories" chart-y-axis-title="" chart-x-axis-title="" chart-color="" chart-data-range-labels="" chart-grid-lines="none" chart-legend="bottom" chart-line-width="" id="chart"><canvas></canvas></chart>
+            </td>
+            <!-- TODO consider using to render physicians, and then filtering after submission
+            <td style="background-color: rgba(90, 90, 90, 0.0980392);">
+              <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+                <tbody>
+                  <tr>
+                    <td style="width: 80px;"><strong>Experience</strong></td>
+                    <td style="width: 70px;"><strong>Count:&nbsp;</strong><u id="t" style="text-decoration: none;">12</u></td>
+                  </tr>
+                  <tr>
+                    <td colspan="3"></td>
+                  </tr>
 
-<!--=======================================================================-->
-<h2>General Questions</h2>
+                  <tr id="d(diarrhea)" style="display: none;">
+                    <td>
+                    <p>diarrhea</p>
+                    </td>
+                    <td id="u(diarrhea)" style="text-align: center;">&nbsp;</td>
+                  </tr>
+                  <tr id="d(cough)" style="display: none;">
+                    <td>
+                    <p>cough</p>
+                    </td>
+                    <td id="u(cough)" style="text-align: center;">&nbsp;</td>
+                  </tr>
+                  <tr id="d(itch)" style="display: none;">
+                    <td>
+                    <p>itch</p>
+                    </td>
+                    <td id="u(itch)" style="text-align: center;">&nbsp;</td>
+                  </tr>
+                  <tr id="d(depression)" style="display: none;">
+                    <td>
+                    <p>depression</p>
+                    </td>
+                    <td id="u(depression)" style="text-align: center;">&nbsp;</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          -->
+          </tr>
+          <!-- <tr>
+            <td colspan="2">
+              <chart chart-line-color="white" class="chart" widget="chart" style="display: block; box-sizing: border-box; width: 400px; height: 400px; background-color: white; color: black; margin: 0px auto; font-size: 13px; cursor: pointer; font-family: HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; border-radius: 0px; -moz-border-radius: 0px; -webkit-border-radius: 0px;" chart-table="area" chart-type="pie" chart-title="Medical Categories" chart-y-axis-title="" chart-x-axis-title="" chart-color="" chart-data-range-labels="" chart-grid-lines="none" chart-legend="bottom" chart-line-width="" id="chart"><canvas></canvas></chart></td>
+          </tr> -->
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-<div class="column">
+<textarea id="lambda" style="display:none;" type="text/hrf">
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Data
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<div class="row">
-<label>Have you had any of the following?</label>
-<select id='specificcondition(gi)' style='width:80' onchange='modselector(this)' >
-  <option value='unknown'></option>
-  <option>GERD</option>
-  <option>IBS</option>
-  <option>ARFID</option>
-</select>
-</div>
-<div class="row">
+value(cough,true)
+value(depression,true)
+value(itch,true)
+value(diarrhea,true)
+value(fever,true)
+value(wheeze,true)
+value(anxiety,true)
+value(units(cough),3)
+value(units(depression),3)
+value(units(diarrhea),3)
+value(units(itch),3)
+value(units(fever),3)
+value(units(wheeze),3)
+value(units(anxiety),3)
 
-<label>Have you had any of the following?</label>
-<select id='specificcondition(psych)' style='width:80' onchange='modselector(this)'>
-  <option value='unknown'></option>
-  <option>Depression</option>
-  <option>Anxiety</option>
-  <option>Other</option>
-</select>
-</div>
-</div>
-
-<br/>
-<br/>
-
-<!--=======================================================================-->
-
-<textarea id='lambda' type='text/hrf' style='display:none'>
-
-iscondition(GERD)
-iscondition(IBS)
-iscondition(ARFID)
-
-issymptom(cough)
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Rules
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 </textarea>
 
-<!--=======================================================================-->
+<textarea id="library" style="display:none;" type="text/hrf">
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Rules
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<textarea id='library' type='text/hrf' style='display:none'>
+experience(cough,"Respiratory")
+experience(cough,"Primary Care")
+experience(cough,"COVID")
+experience(wheeze,"Respiratory")
+experience(wheeze,"Primary Care")
+experience(wheeze,"COVID")
+experience(fever,"Primary Care")
+experience(fever,"COVID")
+experience(depression,"Mental Health")
+experience(anxiety,"Mental Health")
+experience(itch,"Allergy")
+experience(itch,"Primary Care")
+experience(diarrhea,"GI")
+experience(diarrhea,"Primary Care")
+
+quarter(none,cough)
+quarter(none,depression)
+quarter(none,itch)
+quarter(none,diarrhea)
+quarter(none,fever)
+quarter(none,wheeze)
+quarter(none,depression)
+quarter(none,anxiety)
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% TODO: replace 'teachers' with doctors and their images, etc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+photo(jurafsky,"http://ai.stanford.edu/wp-content/uploads/2014/04/dan-jurafsky.jpg")
+photo(li,"http://ai.stanford.edu/wp-content/uploads/2011/07/fei-fei-li.png")
+photo(genesereth,"http://ai.stanford.edu/wp-content/uploads/2011/07/faculty_michael_g.jpg")
+photo(khatib,"http://ai.stanford.edu/wp-content/uploads/2011/07/faculty_oussama_k.jpg")
+photo(manning,"http://ai.stanford.edu/wp-content/uploads/2011/07/faculty_chris_m.jpg")
+photo(ermon,"http://ai.stanford.edu/wp-content/uploads/2011/07/faculty_stefano_e.jpg")
+photo(duchi,"http://ai.stanford.edu/wp-content/uploads/2014/07/duchi_john.jpg")
+photo(kochenderfer,"http://ai.stanford.edu/wp-content/uploads/2014/07/mykel_kochenderfer_affiliate_faculty.jpg")
+photo(batzoglou,"http://ai.stanford.edu/wp-content/uploads/2011/07/faculty_serafim_b.jpg")
+photo(dror,"http://ai.stanford.edu/wp-content/uploads/2014/08/dror_affiliate.jpg")
+photo(savarese,"http://ai.stanford.edu/wp-content/uploads/2011/07/faculty_silvio_s.jpg")
+
+nexp(QUARTER,N) :-
+  quarter(QUARTER,X) &
+  countofall(EXP,quarter(QUARTER,EXP) & value(EXP,true),N)
+
+area(AREA,N) :-
+  experience(X,AREA) &
+  setofall([V,EXP], experience(EXP,AREA)&value(EXP,true)& value(units(EXP),V),S) &
+  map(first,S,L) &
+  sum(L,N)
+
+rows(teacher,L) :- setofall(teacher(T,N),teacher(T,N),L)
+
+teacher(T,N) :-
+  teaches(TEACHER,X) &
+  countofall(COURSE,teaches(TEACHER,COURSE)&value(COURSE,true),N) &
+  min(N,1,1) &
+  photo(TEACHER,PHOTO) &
+  stringappend("<img src=&#39;",PHOTO,"&#39; width=&#39;40&#39; height=&#39;40&#39; title=&#39;",TEACHER,"&#39;/>",T)
+
+style(teacher,visibility,visible) :- nonempty
+style(teacher,visibility,hidden) :- ~nonempty
+nonempty :- teacher(T,N)
+
+style(row(X),"background-color","rgba(239,72,54,0.3)") :- quarter(autumn,X)
+style(row(X),"background-color","rgba(34,167,240,0.3)") :- quarter(winter,X)
+style(row(X),"background-color","rgba(135,211,124,0.6)") :- quarter(spring,X)
+style(row(X),"background-color","rgba(255, 228, 242, 0.8)") :- quarter(none,X)
+
+style(d(X),display,"table-row") :-
+  experience(X,Y) &
+  value(X,true)
+
+style(d(X),display,none) :-
+  experience(X,Y) &
+  ~value(X,true)
+
+innerhtml(u(X),V) :-
+  experience(X,Y) &
+  value(X,true) &
+  value(units(X),V)
+
+totalunits(T) :- 
+  setofall([V,X,Y],
+    teaches(Y,X) & 
+    value(X,true) & 
+    value(units(X),V), S) &
+  map(first,S,L) &
+  sum(L,T)
+
+innerhtml(t,T) :- totalunits(T)
+
+satisfied(c1) :-
+  countofall([X,Y], teaches(Y,X) & value(X,true), C) &
+  min(C,6,6)
+
+satisfied(c2) :- 
+  countofall([X,Z,C],
+    quarter(X,Z) & 
+    countofall(Y,quarter(X,Y) & value(Y,true),C) & 
+    min(C,4,4), 0)
+
+first(X!Y,X)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+style(R,color,red) :- req(R) & ~satisfied(R)
+style(R,color,black) :- req(R) & satisfied(R)
+
+req(c1)
+req(c2)
+
+value(units(X),1) :: experience(X)
+
+select(X,true) :: ~value(X,false) & value(X,true)
+select(X,false) :: ~value(X,true) & value(X,false)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 </textarea>
 
-<!--=======================================================================-->
-
-  </center>
 </body>
 
-<!--=======================================================================-->
-
 </html>
+

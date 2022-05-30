@@ -1,0 +1,402 @@
+
+<html>
+<head>
+  <title></title>
+  <meta charset="UTF-8">
+  <style name="worksheet" type="text/css">p{margin:0px;padding:0px;}
+  </style>
+  <script src="http://epilog.stanford.edu//epilog/javascript/epilog.js"></script>
+  <script src="http://epilog.stanford.edu//worksheets/javascript/worksheets.js"></script>
+        <script src="http://epilog.stanford.edu//worksheets/widgets/charts.js"></script></head>
+<body onload="initialize()">
+<table border="0" cellpadding="0" cellspacing="0" style="width: 840px; border-collapse: collapse; margin: 0px auto; font-family: HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; border-radius: 5px; box-shadow: black 0px 0px 3px 3px;">
+  <tbody>
+    <tr>
+      <td colspan="4"><span style="font-size:20px;"><strong>&nbsp; AI Program Requirements&nbsp;</strong></span> Quarters: <span style="background-color:rgba(239, 72, 54, 0.3);">&nbsp; &nbsp;&nbsp;</span> autumn &nbsp;<span style="background-color:rgba(34, 167, 240, 0.3);">&nbsp; &nbsp;&nbsp;</span> winter &nbsp;<span style="background-color:rgba(135, 211, 124, 0.6);">&nbsp; &nbsp;&nbsp;</span> spring</td>
+    </tr>
+    <tr>
+      <td colspan="4" id="c1" style="color: red;"><em>&nbsp; - Take at least 6 courses</em></td>
+    </tr>
+    <tr>
+      <td colspan="4" id="c2" style="color: black;"><em>&nbsp; - Take at most 3 courses per quarter</em></td>
+    </tr>
+    <!--tr>
+      <td colspan="4" style="padding-top: 10px; padding-bottom: 10px;">Quarters: <span style="background-color:rgba(239, 72, 54, 0.3);">&nbsp; &nbsp;&nbsp;</span> autumn &nbsp;<span style="background-color:rgba(34, 167, 240, 0.3);">&nbsp; &nbsp;&nbsp;</span> winter &nbsp;<span style="background-color:rgba(135, 211, 124, 0.6);">&nbsp; &nbsp;&nbsp;</span> spring</td>
+    </tr-->
+    <tr>
+      <td colspan="4">
+      <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse; margin: 0px auto; font-family: HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">
+        <tbody>
+          <tr>
+            <td id="row(cs124)" style="width: 25%; background-color: rgba(34, 167, 240, 0.298039);"><input id="cs124" onchange="modcheck(this)" type="checkbox">&nbsp;CS 124</td>
+            <td id="row(cs131)" style="width: 25%; background-color: rgba(239, 72, 54, 0.298039);"><input id="cs131" onchange="modcheck(this)" type="checkbox" />&nbsp;CS 131</td>
+            <td id="row(cs157)" style="width: 25%; background-color: rgba(239, 72, 54, 0.298039);"><input id="cs157" onchange="modcheck(this)" type="checkbox" />&nbsp;CS 157</td>
+            <td id="row(cs223a)" style="width: 25%; background-color: rgba(34, 167, 240, 0.298039);"><input id="cs223a" onchange="modcheck(this)" type="checkbox" />&nbsp;CS 223A</td>
+          </tr>
+          <tr>
+            <td id="row(cs224n)" style="background-color: rgba(34, 167, 240, 0.298039);"><input id="cs224n" onchange="modcheck(this)" type="checkbox" />&nbsp;CS 224N</td>
+            <td id="row(cs225a)" style="background-color: rgba(135, 211, 124, 0.6);"><input id="cs225a" onchange="modcheck(this)" type="checkbox" />&nbsp;CS 225A</td>
+            <td id="row(cs227b)" style="background-color: rgba(135, 211, 124, 0.6);"><input id="cs227b" onchange="modcheck(this)" type="checkbox" />&nbsp;CS 227B</td>
+            <td id="row(cs228)" style="background-color: rgba(34, 167, 240, 0.298039);"><input id="cs228" onchange="modcheck(this)" type="checkbox" />&nbsp;CS 228</td>
+          </tr>
+          <tr>
+            <td id="row(cs229)" style="background-color: rgba(34, 167, 240, 0.298039);"><input id="cs229" onchange="modcheck(this)" type="checkbox" />&nbsp;CS 229</td>
+            <td id="row(cs231n)" style="background-color: rgba(34, 167, 240, 0.298039);"><input id="cs231n" onchange="modcheck(this)" type="checkbox" />&nbsp;CS 231N</td>
+            <td id="row(cs238)" style="background-color: rgba(239, 72, 54, 0.298039);"><input id="cs238" onchange="modcheck(this)" type="checkbox" />&nbsp;CS 238</td>
+            <td id="row(cs273a)" style="background-color: rgba(239, 72, 54, 0.298039);"><input id="cs273a" onchange="modcheck(this)" type="checkbox" />&nbsp;CS 273A</td>
+          </tr>
+          <tr>
+            <td id="row(cs273b)" style="background-color: rgba(239, 72, 54, 0.298039);"><input id="cs273b" onchange="modcheck(this)" type="checkbox" />&nbsp;CS 273B</td>
+            <td id="row(cs276)" style="background-color: rgba(135, 211, 124, 0.6);"><input id="cs276" onchange="modcheck(this)" type="checkbox" />&nbsp;CS 276</td>
+            <td id="row(cs279)" style="background-color: rgba(135, 211, 124, 0.6);"><input id="cs279" onchange="modcheck(this)" type="checkbox" />&nbsp;CS 279</td>
+            <td id="row(cs331b)" style="background-color: rgba(135, 211, 124, 0.6);"><input id="cs331b" onchange="modcheck(this)" type="checkbox" />&nbsp;CS 331B</td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr style="vertical-align: top;">
+      <td colspan="4">
+      <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+        <tbody>
+          <tr style="vertical-align: top;">
+            <td>
+              <chart chart-line-color="white" class="chart" widget="chart" style="display: block; box-sizing: border-box; width: 400px; height: 400px; background-color: white; color: black; margin: 0px auto; font-size: 13px; cursor: pointer; font-family: HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; border-radius: 0px; -moz-border-radius: 0px; -webkit-border-radius: 0px;" chart-table="area" chart-type="pie" chart-title="Focus on AI Topics" chart-y-axis-title="" chart-x-axis-title="" chart-color="" chart-data-range-labels="" chart-grid-lines="none" chart-legend="bottom" chart-line-width="" id="chart"><canvas></canvas></chart>
+            </td>
+            <td style="background-color: rgba(90, 90, 90, 0.0980392);">
+              <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+                <tbody>
+                  <tr>
+                    <td style="width: 80px;"><strong>Course</strong></td>
+                    <td style="width: 70px;"><strong>Total:&nbsp;</strong><u id="t" style="text-decoration: none;">12</u></td>
+                  </tr>
+                  <tr>
+                    <td colspan="3"></td>
+                  </tr>
+                  <tr id="d(cs124)" style="display: none;">
+                    <td>
+                    <p>CS 124</p>
+                    </td>
+                    <td id="u(cs124)" style="text-align: center;">&nbsp;</td>
+                  </tr>
+                  <tr id="d(cs131)" style="display: none;">
+                    <td>
+                    <p>CS 131</p>
+                    </td>
+                    <td id="u(cs131)" style="text-align: center;">&nbsp;</td>
+                  </tr>
+                  <tr id="d(cs157)" style="display: table-row;">
+                    <td>
+                    <p>CS 157</p>
+                    </td>
+                    <td id="u(cs157)" style="text-align: center;">3</td>
+                  </tr>
+                  <tr id="d(cs223a)" style="display: none;">
+                    <td>
+                    <p>CS 223A</p>
+                    </td>
+                    <td id="u(cs223a)" style="text-align: center;">&nbsp;</td>
+                  </tr>
+                  <tr id="d(cs224n)" style="display: none;">
+                    <td>
+                    <p>CS 224N</p>
+                    </td>
+                    <td id="u(cs224n)" style="text-align: center;">&nbsp;</td>
+                  </tr>
+                  <tr id="d(cs225a)" style="display: none;">
+                    <td>
+                    <p>CS 225A</p>
+                    </td>
+                    <td id="u(cs225a)" style="text-align: center;">&nbsp;</td>
+                  </tr>
+                  <tr id="d(cs227b)" style="display: table-row;">
+                    <td>
+                    <p>CS 227B</p>
+                    </td>
+                    <td id="u(cs227b)" style="text-align: center;">3</td>
+                  </tr>
+                  <tr id="d(cs228)" style="display: table-row;">
+                    <td>
+                    <p>CS 228</p>
+                    </td>
+                    <td id="u(cs228)" style="text-align: center;">3</td>
+                  </tr>
+                  <tr id="d(cs229)" style="display: none;">
+                    <td>
+                    <p>CS 229</p>
+                    </td>
+                    <td id="u(cs229)" style="text-align: center;">&nbsp;</td>
+                  </tr>
+                  <tr id="d(cs231n)" style="display: none;">
+                    <td>
+                    <p>CS 231N</p>
+                    </td>
+                    <td id="u(cs231n)" style="text-align: center;">&nbsp;</td>
+                  </tr>
+                  <tr id="d(cs238)" style="display: none;">
+                    <td>
+                    <p>CS 238</p>
+                    </td>
+                    <td id="u(cs238)" style="text-align: center;">&nbsp;</td>
+                  </tr>
+                  <tr id="d(cs273a)" style="display: none;">
+                    <td>
+                    <p>CS 273A</p>
+                    </td>
+                    <td id="u(cs273a)" style="text-align: center;">&nbsp;</td>
+                  </tr>
+                  <tr id="d(cs273b)" style="display: none;">
+                    <td>
+                    <p>CS 273B</p>
+                    </td>
+                    <td id="u(cs273b)" style="text-align: center;">&nbsp;</td>
+                  </tr>
+                  <tr id="d(cs276)" style="display: none;">
+                    <td>
+                    <p>CS 276</p>
+                    </td>
+                    <td id="u(cs276)" style="text-align: center;">&nbsp;</td>
+                  </tr>
+                  <tr id="d(cs279)" style="display: none;">
+                    <td>
+                    <p>CS 279</p>
+                    </td>
+                    <td id="u(cs279)" style="text-align: center;">&nbsp;</td>
+                  </tr>
+                  <tr id="d(cs331b)" style="display: table-row;">
+                    <td>
+                    <p>CS 331B</p>
+                    </td>
+                    <td id="u(cs331b)" style="text-align: center;">3</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td>
+              <table border="0" cellpadding="0" cellspacing="0" type='table' id="teacher" style="width: 200px; font-family: HelveticaNeue-Light, 'Helvetica Neue', Helvetica, sans-serif; margin: 0px auto; text-align: center; visibility: visible;">
+                <thead>
+                  <tr>
+                    <th displaystyle="stringfield">Professor</th>
+                    <th># Courses</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><img height="40" src="http://ai.stanford.edu/wp-content/uploads/2011/07/faculty_michael_g.jpg" title="eneseret" width="40" /></td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td><img height="40" src="http://ai.stanford.edu/wp-content/uploads/2011/07/faculty_silvio_s.jpg" title="avares" width="40" /></td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td><img height="40" src="http://ai.stanford.edu/wp-content/uploads/2011/07/faculty_stefano_e.jpg" title="rmo" width="40" /></td>
+                    <td>1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <!-- <tr>
+            <td colspan="2">
+              <chart chart-line-color="white" class="chart" widget="chart" style="display: block; box-sizing: border-box; width: 400px; height: 400px; background-color: white; color: black; margin: 0px auto; font-size: 13px; cursor: pointer; font-family: HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; border-radius: 0px; -moz-border-radius: 0px; -webkit-border-radius: 0px;" chart-table="area" chart-type="pie" chart-title="Focus on AI Topics" chart-y-axis-title="" chart-x-axis-title="" chart-color="" chart-data-range-labels="" chart-grid-lines="none" chart-legend="bottom" chart-line-width="" id="chart"><canvas></canvas></chart></td>
+          </tr> -->
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<textarea id="lambda" style="display:none;" type="text/hrf">
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Data
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+value(cs157,true)
+value(cs227b,true)
+value(cs228,true)
+value(cs331b,true)
+value(units(cs124),3)
+value(units(cs131),3)
+value(units(cs223a),3)
+value(units(cs224n),3)
+value(units(cs225a),3)
+value(units(cs227b),3)
+value(units(cs228),3)
+value(units(cs229),3)
+value(units(cs231n),3)
+value(units(cs238),3)
+value(units(cs273a),3)
+value(units(cs273b),3)
+value(units(cs276),3)
+value(units(cs279),3)
+value(units(cs157),3)
+value(units(cs331b),4)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Rules
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+</textarea>
+
+<textarea id="library" style="display:none;" type="text/hrf">
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Rules
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+course(cs124,";Natural Language Processing")
+course(cs124,"Machine Learning")
+course(cs131,"Computer Vision")
+course(cs157,"Logic")
+course(cs223a,"Robotics")
+course(cs224n,"Natural Language Processing")
+course(cs224n,"Machine Learning")
+course(cs225a,"Robotics")
+course(cs227b,"Logic")
+course(cs228,"Machine Learning")
+course(cs228,"Natural Language Processing")
+course(cs228,"Computer Vision")
+course(cs228,"Computational Biology")
+course(cs229,"Machine Learning")
+course(cs231n,"Computer Vision")
+course(cs231n,"Machine Learning")
+course(cs238,"Machine Learning")
+course(cs238,"Robotics")
+course(cs273a,"Computational Biology")
+course(cs273a,"Computational Biology")
+course(cs273b,"Computational Biology")
+course(cs273b,"Machine Learning")
+course(cs276,"Information Retrieval")
+course(cs279,"Computational Biology")
+course(cs279,"Computational Biology")
+course(cs331b,"Computer Vision")
+course(cs331b,"Machine Learning")
+
+quarter(winter,cs124)
+quarter(autumn,cs131)
+quarter(autumn,cs157)
+quarter(winter,cs223a)
+quarter(winter,cs224n)
+quarter(spring,cs225a)
+quarter(spring,cs227b)
+quarter(winter,cs228)
+quarter(winter,cs229)
+quarter(winter,cs231n)
+quarter(autumn,cs238)
+quarter(autumn,cs273a)
+quarter(autumn,cs273b)
+quarter(spring,cs276)
+quarter(spring,cs279)
+quarter(spring,cs331b)
+
+teaches(jurafsky,cs124)
+teaches(li,cs131)
+teaches(genesereth,cs157)
+teaches(khatib,cs223a)
+teaches(manning,cs224n)
+teaches(khatib,cs225a)
+teaches(genesereth,cs227b)
+teaches(ermon,cs228)
+teaches(duchi,cs229)
+teaches(li,cs231n)
+teaches(kochenderfer,cs238)
+teaches(batzoglou,cs273a)
+teaches(batzoglou,cs273b)
+teaches(manning,cs276)
+teaches(dror,cs279)
+teaches(savarese,cs331b)
+
+photo(jurafsky,"http://ai.stanford.edu/wp-content/uploads/2014/04/dan-jurafsky.jpg")
+photo(li,"http://ai.stanford.edu/wp-content/uploads/2011/07/fei-fei-li.png")
+photo(genesereth,"http://ai.stanford.edu/wp-content/uploads/2011/07/faculty_michael_g.jpg")
+photo(khatib,"http://ai.stanford.edu/wp-content/uploads/2011/07/faculty_oussama_k.jpg")
+photo(manning,"http://ai.stanford.edu/wp-content/uploads/2011/07/faculty_chris_m.jpg")
+photo(ermon,"http://ai.stanford.edu/wp-content/uploads/2011/07/faculty_stefano_e.jpg")
+photo(duchi,"http://ai.stanford.edu/wp-content/uploads/2014/07/duchi_john.jpg")
+photo(kochenderfer,"http://ai.stanford.edu/wp-content/uploads/2014/07/mykel_kochenderfer_affiliate_faculty.jpg")
+photo(batzoglou,"http://ai.stanford.edu/wp-content/uploads/2011/07/faculty_serafim_b.jpg")
+photo(dror,"http://ai.stanford.edu/wp-content/uploads/2014/08/dror_affiliate.jpg")
+photo(savarese,"http://ai.stanford.edu/wp-content/uploads/2011/07/faculty_silvio_s.jpg")
+
+ncourses(QUARTER,N) :-
+  quarter(QUARTER,X) &
+  countofall(COURSE,quarter(QUARTER,COURSE) & value(COURSE,true),N)
+
+area(AREA,N) :-
+  course(X,AREA) &
+  setofall([V,COURSE], course(COURSE,AREA)&value(COURSE,true)& value(units(COURSE),V),S) &
+  map(first,S,L) &
+  sum(L,N)
+
+rows(teacher,L) :- setofall(teacher(T,N),teacher(T,N),L)
+
+teacher(T,N) :-
+  teaches(TEACHER,X) &
+  countofall(COURSE,teaches(TEACHER,COURSE)&value(COURSE,true),N) &
+  min(N,1,1) &
+  photo(TEACHER,PHOTO) &
+  stringappend("<img src=&#39;",PHOTO,"&#39; width=&#39;40&#39; height=&#39;40&#39; title=&#39;",TEACHER,"&#39;/>",T)
+
+style(teacher,visibility,visible) :- nonempty
+style(teacher,visibility,hidden) :- ~nonempty
+nonempty :- teacher(T,N)
+
+style(row(X),"background-color","rgba(239,72,54,0.3)") :- quarter(autumn,X)
+style(row(X),"background-color","rgba(34,167,240,0.3)") :- quarter(winter,X)
+style(row(X),"background-color","rgba(135,211,124,0.6)") :- quarter(spring,X)
+
+style(d(X),display,"table-row") :-
+  course(X,Y) &
+  value(X,true)
+
+style(d(X),display,none) :-
+  course(X,Y) &
+  ~value(X,true)
+
+innerhtml(u(X),V) :-
+  course(X,Y) &
+  value(X,true) &
+  value(units(X),V)
+
+totalunits(T) :- 
+  setofall([V,X,Y],
+    teaches(Y,X) & 
+    value(X,true) & 
+    value(units(X),V), S) &
+  map(first,S,L) &
+  sum(L,T)
+
+innerhtml(t,T) :- totalunits(T)
+
+satisfied(c1) :-
+  countofall([X,Y], teaches(Y,X) & value(X,true), C) &
+  min(C,6,6)
+
+satisfied(c2) :- 
+  countofall([X,Z,C],
+    quarter(X,Z) & 
+    countofall(Y,quarter(X,Y) & value(Y,true),C) & 
+    min(C,4,4), 0)
+
+first(X!Y,X)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+style(R,color,red) :- req(R) & ~satisfied(R)
+style(R,color,black) :- req(R) & satisfied(R)
+
+req(c1)
+req(c2)
+
+select(X,true) :: ~value(X,false) & value(X,true)
+select(X,false) :: ~value(X,true) & value(X,false)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+</textarea>
+
+</body>
+
+</html>
+
