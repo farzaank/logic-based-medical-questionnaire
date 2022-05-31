@@ -3,21 +3,20 @@
 <head>
   <title></title>
   <meta charset="UTF-8">
-  <style name="worksheet" type="text/css">p{margin:0px;padding:0px;}
-  </style>
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
   <script src="http://epilog.stanford.edu//epilog/javascript/epilog.js"></script>
   <script src="http://epilog.stanford.edu//worksheets/javascript/worksheets.js"></script>
         <script src="http://epilog.stanford.edu//worksheets/widgets/charts.js"></script></head>
 <body onload="initialize()">
-<table border="3" cellpadding="1" cellspacing="0" style="width: 840px; border-collapse: collapse; margin: 0px auto; font-family: HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; border-radius: 5px; box-shadow: black 0px 0px 3px 3px;">
+<table class="content-center" style="margin: 0px auto; width: 500px;">
   <tbody>
 
     <tr>
       
-    <td colspan="4"><img src="header.png" alt="Vaden Health Services" width="375" height="50">
+    <td colspan="4"><a href="https://vaden.stanford.edu/"><img src="header.png" alt="Vaden Health Services" width="375" height="50" style="margin: 0px auto;"></a>
     </tr>
     <tr>
-      <td colspan="4"><span style="font-size:20px;"><strong>&nbsp;Patient Intake Form&nbsp;</strong>
+      <td colspan="4"><span style="font-size:20px;"><strong>&nbsp;Clinician Recommendation Form&nbsp;</strong>
     </tr>
 
     <tr>
@@ -26,9 +25,6 @@
     <tr>
       <td colspan="4" id="c1" style="color: red;"><em>&nbsp; - Please select at least one experience</em></td>
     </tr>
-    <!--tr>
-      <td colspan="4" style="padding-top: 10px; padding-bottom: 10px;">Quarters: <span style="background-color:rgba(239, 72, 54, 0.3);">&nbsp; &nbsp;&nbsp;</span> autumn &nbsp;<span style="background-color:rgba(34, 167, 240, 0.3);">&nbsp; &nbsp;&nbsp;</span> winter &nbsp;<span style="background-color:rgba(135, 211, 124, 0.6);">&nbsp; &nbsp;&nbsp;</span> spring</td>
-    </tr-->
     <tr>
       <td colspan="4">
       <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse; margin: 0px auto; font-family: HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">
@@ -56,72 +52,41 @@
         <tbody>
           <tr style="vertical-align: top;">
             <td>
-              <chart chart-line-color="white" class="chart" widget="chart" style="display: block; box-sizing: border-box; width: 400px; height: 400px; background-color: white; color: black; margin: 0px auto; font-size: 13px; cursor: pointer; font-family: HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; border-radius: 0px; -moz-border-radius: 0px; -webkit-border-radius: 0px;" chart-table="area" chart-type="pie" chart-title="Medical Categories" chart-y-axis-title="" chart-x-axis-title="" chart-color="" chart-data-range-labels="" chart-grid-lines="none" chart-legend="bottom" chart-line-width="" id="chart"><canvas></canvas></chart>
-            </td>
-            <!-- TODO consider using to render physicians, and then filtering after submission
-            <td style="background-color: rgba(90, 90, 90, 0.0980392);">
-              <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+          <tr>
+            <td id="row(showcats)" style="background-color: rgba(34, 167, 240, 0.298039);"><input id="showcats" onchange="modcheck(this)" type="checkbox" />&nbsp;Show care topic categories?</td>
+          </tr>
+          <tr>
+            <td id="row(showrecs)" style="background-color: rgba(34, 167, 240, 0.298039);"><input id="showrecs" onchange="modcheck(this)" type="checkbox"/>&nbsp;Show care provider recommendations?</td>
+          </tr>
+              <chart chart-line-color="white" class="chart" widget="chart" style="display: none;" chart-table="area" chart-type="pie" chart-title="Medical Categories" chart-y-axis-title="" chart-x-axis-title="" chart-color="" chart-data-range-labels="" chart-grid-lines="none" chart-legend="bottom" chart-line-width="" id="chart" ><canvas></canvas></chart>
+            </td>          <td>
+              <table border="0" cellpadding="0" cellspacing="0" type='table' id="doctor" style="width: 200px; font-family: HelveticaNeue-Light, 'Helvetica Neue', Helvetica, sans-serif; margin: 0px auto; text-align: center; visibility: hidden;">
+                <thead>
+                  <tr>
+                    <th displaystyle="stringfield">Doctor</th>
+                    <th># Matches</th>
+                  </tr>
+                </thead>
                 <tbody>
                   <tr>
-                    <td style="width: 80px;"><strong>Experience</strong></td>
-                    <td style="width: 70px;"><strong>Count:&nbsp;</strong><u id="t" style="text-decoration: none;">12</u></td>
-                  </tr>
-                  <tr>
-                    <td colspan="3"></td>
-                  </tr>
-
-                  <tr id="d(diarrhea)" style="display: none;">
-                    <td>
-                    <p>diarrhea</p>
-                    </td>
-                    <td id="u(diarrhea)" style="text-align: center;">&nbsp;</td>
-                  </tr>
-                  <tr id="d(cough)" style="display: none;">
-                    <td>
-                    <p>cough</p>
-                    </td>
-                    <td id="u(cough)" style="text-align: center;">&nbsp;</td>
-                  </tr>
-                  <tr id="d(itch)" style="display: none;">
-                    <td>
-                    <p>itch</p>
-                    </td>
-                    <td id="u(itch)" style="text-align: center;">&nbsp;</td>
-                  </tr>
-                  <tr id="d(depression)" style="display: none;">
-                    <td>
-                    <p>depression</p>
-                    </td>
-                    <td id="u(depression)" style="text-align: center;">&nbsp;</td>
                   </tr>
                 </tbody>
               </table>
             </td>
-          -->
           </tr>
-          <!-- <tr>
-            <td colspan="2">
-              <chart chart-line-color="white" class="chart" widget="chart" style="display: block; box-sizing: border-box; width: 400px; height: 400px; background-color: white; color: black; margin: 0px auto; font-size: 13px; cursor: pointer; font-family: HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, sans-serif; border-radius: 0px; -moz-border-radius: 0px; -webkit-border-radius: 0px;" chart-table="area" chart-type="pie" chart-title="Medical Categories" chart-y-axis-title="" chart-x-axis-title="" chart-color="" chart-data-range-labels="" chart-grid-lines="none" chart-legend="bottom" chart-line-width="" id="chart"><canvas></canvas></chart></td>
-          </tr> -->
         </tbody>
       </table>
       </td>
     </tr>
   </tbody>
 </table>
+</div>
 
 <textarea id="lambda" style="display:none;" type="text/hrf">
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Data
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-value(cough,true)
-value(depression,true)
-value(itch,true)
-value(diarrhea,true)
-value(fever,true)
-value(wheeze,true)
-value(anxiety,true)
 value(units(cough),3)
 value(units(depression),3)
 value(units(diarrhea),3)
@@ -155,36 +120,40 @@ experience(itch,"Primary Care")
 experience(diarrhea,"GI")
 experience(diarrhea,"Primary Care")
 
-quarter(none,cough)
-quarter(none,depression)
-quarter(none,itch)
-quarter(none,diarrhea)
-quarter(none,fever)
-quarter(none,wheeze)
-quarter(none,depression)
-quarter(none,anxiety)
+bcolor(none,cough)
+bcolor(none,depression)
+bcolor(none,itch)
+bcolor(none,diarrhea)
+bcolor(none,fever)
+bcolor(none,wheeze)
+bcolor(none,depression)
+bcolor(none,anxiety)
 
+treats("Karen Pendley, RN, BSN",preventative)
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% TODO: replace 'teachers' with doctors and their images, etc
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-photo(jurafsky,"http://ai.stanford.edu/wp-content/uploads/2014/04/dan-jurafsky.jpg")
-photo(li,"http://ai.stanford.edu/wp-content/uploads/2011/07/fei-fei-li.png")
-photo(genesereth,"http://ai.stanford.edu/wp-content/uploads/2011/07/faculty_michael_g.jpg")
-photo(khatib,"http://ai.stanford.edu/wp-content/uploads/2011/07/faculty_oussama_k.jpg")
-photo(manning,"http://ai.stanford.edu/wp-content/uploads/2011/07/faculty_chris_m.jpg")
-photo(ermon,"http://ai.stanford.edu/wp-content/uploads/2011/07/faculty_stefano_e.jpg")
-photo(duchi,"http://ai.stanford.edu/wp-content/uploads/2014/07/duchi_john.jpg")
-photo(kochenderfer,"http://ai.stanford.edu/wp-content/uploads/2014/07/mykel_kochenderfer_affiliate_faculty.jpg")
-photo(batzoglou,"http://ai.stanford.edu/wp-content/uploads/2011/07/faculty_serafim_b.jpg")
-photo(dror,"http://ai.stanford.edu/wp-content/uploads/2014/08/dror_affiliate.jpg")
-photo(savarese,"http://ai.stanford.edu/wp-content/uploads/2011/07/faculty_silvio_s.jpg")
+photo("Karen Pendley, RN, BSN","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/stanford-person-default-profile-image.png?h=55541bb6&itok=nW2Kv8t1")
+photo("Edwin Colloff, MD","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/ed_colloff_0_0.jpeg?h=9a223a1b&itok=cU1EsdFK")
+photo("Julie Richards, NP, CTH","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/julie_0_0.jpeg?h=804a83ea&itok=_NY7PAzn")
+photo("Nancy Stoll, RN, MS, BC","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/nancy_0_0.jpeg?h=92748315&itok=da5q70R5")
+photo("Laurel Dawson, MD","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/larurel_0.jpeg?h=cee2c3b2&itok=HAFUwBdr")
+photo("Ann Vu-Nguyen, MSN, FNP","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/ann_v_0.jpeg?h=4e4b0e22&itok=CxkStHng")
+photo("Michele Kastelein, MD","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/michelle_k_0_0.jpeg?h=4f6395cb&itok=awtDUbT1")
+photo("Robyn S. Tepper, MD, FAAFP","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/robyn_0_0.jpeg?h=a40292f0&itok=dlYDxiHL")
+photo("Ammie Wilson Rodden, PA-C","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/ammie_rodden_0_0.jpeg?h=96e442c5&itok=9vC22dUc")
+photo("Lisa Lommel, RN, PhD, FNP, MPH","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/stanford-person-default-profile-image.png?h=55541bb6&itok=nW2Kv8t1")
+photo("Diana Farid, MD, MPH","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/diana_farid_headshot_0.jpeg?h=6cfcc0b6&itok=1h1Gg5HF")
+photo("Doug D. Marania, MD","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/doug_0_0.jpeg?h=48751c22&itok=UTeP5GK3")
+photo("Sandy Lai, MD","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/sandy_0_0.jpeg?h=92748315&itok=AAKMTNj4")
+photo("Margaret Curry, RN, CTH","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/magaret_curry_0_0.jpeg?h=4565adf5&itok=hksQuSmf")
+photo("Racquel Cua, PA","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/stanford-person-default-profile-image.png?h=55541bb6&itok=nW2Kv8t1")
+photo("Danielle Hong, RN","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/stanford-person-default-profile-image.png?h=55541bb6&itok=nW2Kv8t1")
+photo("Susanne Martin, MD","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/stanford-person-default-profile-image.png?h=55541bb6&itok=nW2Kv8t1")
+photo("Swon Park, RN","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/stanford-person-default-profile-image.png?h=55541bb6&itok=nW2Kv8t1")
+photo("Megan Gershon, RN","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/stanford-person-default-profile-image.png?h=55541bb6&itok=nW2Kv8t1")
 
 nexp(QUARTER,N) :-
-  quarter(QUARTER,X) &
-  countofall(EXP,quarter(QUARTER,EXP) & value(EXP,true),N)
+  bcolor(QUARTER,X) &
+  countofall(EXP,bcolor(QUARTER,EXP) & value(EXP,true),N)
 
 area(AREA,N) :-
   experience(X,AREA) &
@@ -192,31 +161,40 @@ area(AREA,N) :-
   map(first,S,L) &
   sum(L,N)
 
-rows(teacher,L) :- setofall(teacher(T,N),teacher(T,N),L)
+rows(doctor,L) :- setofall(doctor(T,N),doctor(T,N),L)
 
-teacher(T,N) :-
-  teaches(TEACHER,X) &
-  countofall(COURSE,teaches(TEACHER,COURSE)&value(COURSE,true),N) &
+doctorOLD(T,N) :-
+  treats(DOCTOR,X) &
+  countofall(TAG,treats(DOCTOR,TAG)&value(TAG,true),N) &
   min(N,1,1) &
-  photo(TEACHER,PHOTO) &
-  stringappend("<img src=&#39;",PHOTO,"&#39; width=&#39;40&#39; height=&#39;40&#39; title=&#39;",TEACHER,"&#39;/>",T)
+  photo(DOCTOR,PHOTO) &
+  stringappend("<img src=&#39;",PHOTO,"&#39; width=&#39;70&#39; height=&#39;70&#39; title=&#39;",DOCTOR,"&#39;/>",T)
 
-style(teacher,visibility,visible) :- nonempty
-style(teacher,visibility,hidden) :- ~nonempty
-nonempty :- teacher(T,N)
+doctor(T,1) :-
+  photo(DOCTOR,PHOTO) &
+  stringappend("<img src=&#39;",PHOTO,"&#39; width=&#39;70&#39; height=&#39;70&#39; title=&#39;",DOCTOR,"&#39;/>",T)
 
-style(row(X),"background-color","rgba(239,72,54,0.3)") :- quarter(autumn,X)
-style(row(X),"background-color","rgba(34,167,240,0.3)") :- quarter(winter,X)
-style(row(X),"background-color","rgba(135,211,124,0.6)") :- quarter(spring,X)
-style(row(X),"background-color","rgba(255, 228, 242, 0.8)") :- quarter(none,X)
+style(doctor,visibility,visible) :- value(showrecs,true)
+style(doctor,visibility,hidden) :- ~value(showrecs,true)
+
+style(row(X),"background-color","rgba(239,72,54,0.3)") :- bcolor(autumn,X)
+style(row(X),"background-color","rgba(34,167,240,0.3)") :- bcolor(winter,X)
+style(row(X),"background-color","rgba(135,211,124,0.6)") :- bcolor(spring,X)
+style(row(X),"background-color","rgba(255, 228, 242, 0.8)") :- bcolor(none,X)
 
 style(d(X),display,"table-row") :-
   experience(X,Y) &
   value(X,true)
 
 style(d(X),display,none) :-
-  experience(X,Y) &
+  course(X,Y) &
   ~value(X,true)
+
+style(chart,display,"block") :-
+  value(showcats,true)
+
+style(chart,display,none) :-
+  ~value(showcats,true) 
 
 innerhtml(u(X),V) :-
   experience(X,Y) &
