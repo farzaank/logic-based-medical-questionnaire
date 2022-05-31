@@ -31,12 +31,12 @@
         <tbody>
           <tr>
             <td id="row(gennutrition)" style="width: 25%; background-color: rgba(239, 72, 54, 0.298039);"><input id="gennutrition" onchange="modcheck(this)" type="checkbox" />&nbsp;General Nutrition</td>
-            <td id="row(depression)" style="width: 25%; background-color: rgba(34, 167, 240, 0.298039);"><input id="depression" onchange="modcheck(this)" type="checkbox" />&nbsp;Depression</td>
-            <td id="row(diarrhea)" style="width: 25%; background-color: rgba(34, 167, 240, 0.298039);"><input id="diarrhea" onchange="modcheck(this)" type="checkbox">&nbsp;Diarrhea</td>
+            <td id="row(eatdisorder)" style="width: 25%; background-color: rgba(34, 167, 240, 0.298039);"><input id="eatdisorder" onchange="modcheck(this)" type="checkbox" />&nbsp;Eating Disorder</td>
+            <td id="row(rash)" style="width: 25%; background-color: rgba(34, 167, 240, 0.298039);"><input id="rash" onchange="modcheck(this)" type="checkbox">&nbsp;Rash</td>
           </tr>
           <tr>
-            <td id="row(itch)" style="width: 25%; background-color: rgba(239, 72, 54, 0.298039);"><input id="itch" onchange="modcheck(this)" type="checkbox" />&nbsp;Itch</td>
-            <td id="row(wheeze)" style="width: 25%; background-color: rgba(239, 72, 54, 0.298039);"><input id="wheeze" onchange="modcheck(this)" type="checkbox" />&nbsp;Wheeze</td>
+            <td id="row(acne)" style="width: 25%; background-color: rgba(239, 72, 54, 0.298039);"><input id="acne" onchange="modcheck(this)" type="checkbox" />&nbsp;Acne</td>
+            <td id="row(genskin)" style="width: 25%; background-color: rgba(239, 72, 54, 0.298039);"><input id="genskin" onchange="modcheck(this)" type="checkbox" />&nbsp;Other skin</td>
             <td id="row(fever)" style="width: 25%; background-color: rgba(239, 72, 54, 0.298039);"><input id="fever" onchange="modcheck(this)" type="checkbox" />&nbsp;Fever</td>
           </tr>
           <tr>
@@ -111,22 +111,24 @@ concern(genskin,"dermatology")
 concern(sinjury,"sports")
 concern(sperformance,"sports")
 concern(fever,"urgent")
+concern(depression,"mental")
+concern(anxiety,"mental")
 
 concern(wheeze,"COVID")
 concern(fever,"Primary Care")
 concern(fever,"COVID")
-concern(depression,"Mental Health")
-concern(anxiety,"Mental Health")
 concern(itch,"Allergy")
 concern(itch,"Primary Care")
 concern(diarrhea,"Primary Care")
 
 value(units(gennutrition),3)
 value(units(depression),3)
-value(units(diarrhea),3)
-value(units(itch),3)
-value(units(fever),3)
-value(units(wheeze),3)
+value(units(rash),3)
+value(units(acne),3)
+value(units(genskin),3)
+value(units(sinjury),3)
+value(units(sperformance),3)
+value(units(depression),3)
 value(units(anxiety),3)
 
 doctor("COLLOFF")
@@ -215,7 +217,7 @@ area(AREA,N) :-
   map(first,S,L) &
   sum(L,N)
 
-rows(doctor,L) :- setofall(doctor(T,N),doctor(T,N),L)
+rows(doctortab,L) :- setofall(doctortab(T,N),doctortab(T,N),L)
 
 doctorOLD(T,N) :-
   treats(DOCTOR,X) &
@@ -228,8 +230,8 @@ doctortab(T,1) :-
   photo(DOCTOR,PHOTO) &
   stringappend("<img src=&#39;",PHOTO,"&#39; width=&#39;70&#39; height=&#39;70&#39; title=&#39;",DOCTOR,"&#39;/>",T)
 
-style(doctor,visibility,visible) :- value(showrecs,true)
-style(doctor,visibility,hidden) :- ~value(showrecs,true)
+style(doctortab,visibility,visible) :- value(showrecs,true)
+style(doctortab,visibility,hidden) :- ~value(showrecs,true)
 
 style(row(X),"background-color","rgba(255, 228, 242, 0.8)") :- bcolor(none,X)
 
