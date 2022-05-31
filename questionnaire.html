@@ -30,7 +30,7 @@
       <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse; margin: 0px auto; font-family: HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">
         <tbody>
           <tr>
-            <td id="row(cough)" style="width: 25%; background-color: rgba(239, 72, 54, 0.298039);"><input id="cough" onchange="modcheck(this)" type="checkbox" />&nbsp;Cough</td>
+            <td id="row(gennutrition)" style="width: 25%; background-color: rgba(239, 72, 54, 0.298039);"><input id="gennutrition" onchange="modcheck(this)" type="checkbox" />&nbsp;General Nutrition</td>
             <td id="row(depression)" style="width: 25%; background-color: rgba(34, 167, 240, 0.298039);"><input id="depression" onchange="modcheck(this)" type="checkbox" />&nbsp;Depression</td>
             <td id="row(diarrhea)" style="width: 25%; background-color: rgba(34, 167, 240, 0.298039);"><input id="diarrhea" onchange="modcheck(this)" type="checkbox">&nbsp;Diarrhea</td>
           </tr>
@@ -44,6 +44,12 @@
           </tr>
         </tbody>
       </table>
+      <tr>
+      <td id="row(askloc)" style=""><input id="askloc" onchange="modcheck(this)" type="checkbox" />&nbsp;Do you have a location preference?</td>
+    </tr>
+    <tr>
+      <td id="row(asktime)" style=""><input id="asktime" onchange="modcheck(this)" type="checkbox" />&nbsp;Do you have a time preference?</td>
+    </tr>
       </td>
     </tr>
     <tr style="vertical-align: top;">
@@ -60,7 +66,7 @@
           </tr>
               <chart chart-line-color="white" class="chart" widget="chart" style="display: none;" chart-table="area" chart-type="pie" chart-title="Medical Categories" chart-y-axis-title="" chart-x-axis-title="" chart-color="" chart-data-range-labels="" chart-grid-lines="none" chart-legend="bottom" chart-line-width="" id="chart" ><canvas></canvas></chart>
             </td>          <td>
-              <table border="0" cellpadding="0" cellspacing="0" type='table' id="doctor" style="width: 200px; font-family: HelveticaNeue-Light, 'Helvetica Neue', Helvetica, sans-serif; margin: 0px auto; text-align: center; visibility: hidden;">
+              <table border="0" cellpadding="0" cellspacing="0" type='table' id="doctortab" style="width: 200px; font-family: HelveticaNeue-Light, 'Helvetica Neue', Helvetica, sans-serif; margin: 0px auto; text-align: center; visibility: hidden;">
                 <thead>
                   <tr>
                     <th displaystyle="stringfield">Doctor</th>
@@ -87,13 +93,81 @@
 %%% Data
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-value(units(cough),3)
+medcat("adolescent")
+medcat("dermatology")
+medcat("preventive")
+medcat("sports")
+medcat("travel")
+medcat("urgent")
+medcat("women")
+medcat("mental")
+medcat("nutrition")
+
+concern(gennutrition,"nutrition")
+concern(eatdisorder,"nutrition")
+concern(rash,"dermatology")
+concern(acne,"dermatology")
+concern(genskin,"dermatology")
+concern(sinjury,"sports")
+concern(sperformance,"sports")
+concern(fever,"urgent")
+
+concern(wheeze,"COVID")
+concern(fever,"Primary Care")
+concern(fever,"COVID")
+concern(depression,"Mental Health")
+concern(anxiety,"Mental Health")
+concern(itch,"Allergy")
+concern(itch,"Primary Care")
+concern(diarrhea,"Primary Care")
+
+value(units(gennutrition),3)
 value(units(depression),3)
 value(units(diarrhea),3)
 value(units(itch),3)
 value(units(fever),3)
 value(units(wheeze),3)
 value(units(anxiety),3)
+
+doctor("COLLOFF")
+doctor("CUA")
+doctor("CURRY")
+doctor("DAWSON")
+doctor("FARID")
+doctor("GERSHON")
+doctor("HONG")
+doctor("KASTELEIN")
+doctor("LAI")
+doctor("LOMMEL")
+doctor("MARANIA")
+doctor("MARTIN")
+doctor("PARK")
+doctor("PENDLEY")
+doctor("RICHARDS")
+doctor("RODDEN")
+doctor("STOLL")
+doctor("TEPPER")
+doctor("VU-NGUYEN")
+doctorCats("COLLOFF",["preventive"])
+doctorCats("CUA",["urgent","women"])
+doctorCats("CURRY",["adolescent","preventive"])
+doctorCats("DAWSON",["preventive","women"])
+doctorCats("FARID",["dermatology","preventive","women"])
+doctorCats("GERSHON",["preventive"])
+doctorCats("HONG",["adolescent"])
+doctorCats("KASTELEIN",["preventive","sports","women"])
+doctorCats("LAI",["preventive"])
+doctorCats("LOMMEL",["adolescent","women"])
+doctorCats("MARANIA",["sports"])
+doctorCats("MARTIN",["adolescent","sports","urgent"])
+doctorCats("PARK",["preventive","sports"])
+doctorCats("PENDLEY",["preventive"])
+doctorCats("RICHARDS",["travel"])
+doctorCats("RODDEN",["preventive","sports","women"])
+doctorCats("STOLL",["adolescent","preventive","travel"])
+doctorCats("TEPPER",["adolescent","women"])
+doctorCats("VU-NGUYEN",["adolescent","women"])
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Rules
@@ -104,21 +178,15 @@ value(units(anxiety),3)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Rules
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-experience(cough,"Respiratory")
-experience(cough,"Primary Care")
-experience(cough,"COVID")
-experience(wheeze,"Respiratory")
-experience(wheeze,"Primary Care")
-experience(wheeze,"COVID")
-experience(fever,"Primary Care")
-experience(fever,"COVID")
-experience(depression,"Mental Health")
-experience(anxiety,"Mental Health")
-experience(itch,"Allergy")
-experience(itch,"Primary Care")
-experience(diarrhea,"GI")
-experience(diarrhea,"Primary Care")
+medcat("adolescent")
+medcat("dermatology")
+medcat("preventive")
+medcat("sports")
+medcat("travel")
+medcat("urgent")
+medcat("women")
+medcat("mental")
+medcat("nutrition")
 
 bcolor(none,cough)
 bcolor(none,depression)
@@ -128,8 +196,6 @@ bcolor(none,fever)
 bcolor(none,wheeze)
 bcolor(none,depression)
 bcolor(none,anxiety)
-
-treats("Karen Pendley, RN, BSN",preventative)
 
 photo("Karen Pendley, RN, BSN","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/stanford-person-default-profile-image.png?h=55541bb6&itok=nW2Kv8t1")
 photo("Edwin Colloff, MD","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/ed_colloff_0_0.jpeg?h=9a223a1b&itok=cU1EsdFK")
@@ -151,13 +217,9 @@ photo("Susanne Martin, MD","https://vaden.stanford.edu/sites/g/files/sbiybj20746
 photo("Swon Park, RN","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/stanford-person-default-profile-image.png?h=55541bb6&itok=nW2Kv8t1")
 photo("Megan Gershon, RN","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/stanford-person-default-profile-image.png?h=55541bb6&itok=nW2Kv8t1")
 
-nexp(QUARTER,N) :-
-  bcolor(QUARTER,X) &
-  countofall(EXP,bcolor(QUARTER,EXP) & value(EXP,true),N)
-
 area(AREA,N) :-
-  experience(X,AREA) &
-  setofall([V,EXP], experience(EXP,AREA)&value(EXP,true)& value(units(EXP),V),S) &
+  concern(X,AREA) &
+  setofall([V,EXP], concern(EXP,AREA)&value(EXP,true)& value(units(EXP),V),S) &
   map(first,S,L) &
   sum(L,N)
 
@@ -170,20 +232,17 @@ doctorOLD(T,N) :-
   photo(DOCTOR,PHOTO) &
   stringappend("<img src=&#39;",PHOTO,"&#39; width=&#39;70&#39; height=&#39;70&#39; title=&#39;",DOCTOR,"&#39;/>",T)
 
-doctor(T,1) :-
+doctortab(T,1) :-
   photo(DOCTOR,PHOTO) &
   stringappend("<img src=&#39;",PHOTO,"&#39; width=&#39;70&#39; height=&#39;70&#39; title=&#39;",DOCTOR,"&#39;/>",T)
 
 style(doctor,visibility,visible) :- value(showrecs,true)
 style(doctor,visibility,hidden) :- ~value(showrecs,true)
 
-style(row(X),"background-color","rgba(239,72,54,0.3)") :- bcolor(autumn,X)
-style(row(X),"background-color","rgba(34,167,240,0.3)") :- bcolor(winter,X)
-style(row(X),"background-color","rgba(135,211,124,0.6)") :- bcolor(spring,X)
 style(row(X),"background-color","rgba(255, 228, 242, 0.8)") :- bcolor(none,X)
 
 style(d(X),display,"table-row") :-
-  experience(X,Y) &
+  concern(X,Y) &
   value(X,true)
 
 style(d(X),display,none) :-
@@ -197,7 +256,7 @@ style(chart,display,none) :-
   ~value(showcats,true) 
 
 innerhtml(u(X),V) :-
-  experience(X,Y) &
+  concern(X,Y) &
   value(X,true) &
   value(units(X),V)
 
@@ -231,7 +290,7 @@ style(R,color,black) :- req(R) & satisfied(R)
 req(c1)
 req(c2)
 
-value(units(X),1) :: experience(X)
+value(units(X),1) :: concern(X)
 
 select(X,true) :: ~value(X,false) & value(X,true)
 select(X,false) :: ~value(X,true) & value(X,false)
