@@ -59,7 +59,7 @@
       </table>
       <tr>
         <td id="row(askloc)" style=""><input id="askloc" onchange="modcheck(this)" type="checkbox" />&nbsp;Do you have a location preference?</td>
-        <table id="locquestion" style="margin: 0px auto; width: 500px; visibility: hidden;">
+        <table id="locquestion" style="margin: 0px auto; width: 500px; display: none;">
         <tr>
             <td id="row(east)" style="background-color: rgba(255, 255, 159, 0.8);"><input id="east" onchange="modcheck(this)" type="checkbox" />&nbsp;East Campus</td>
             <td id="row(west)" style="background-color: rgba(255, 255, 159, 0.8);"><input id="west" onchange="modcheck(this)" type="checkbox" />&nbsp;West Campus</td>
@@ -69,10 +69,10 @@
       <table style="margin: 0px auto; width: 500px;">
       <tr >
         <td id="row(asktime)" ><input id="asktime" onchange="modcheck(this)" type="checkbox" />&nbsp;Do you have a time preference?</td>
-        <table id="timequestion" style="margin: 0px auto; width: 500px; visibility: hidden;">
+        <table id="timequestion" style="margin: 0px auto; width: 500px; display: none;">
           <tr>
-            <td id="row(afternoon)" style="background-color: rgba(255, 255, 159, 0.8);"><input id="afternoon" onchange="modcheck(this)" type="checkbox" />&nbsp;Afternoon</td>
             <td id="row(morning)" style="background-color: rgba(255, 255, 159, 0.8);"><input id="morning" onchange="modcheck(this)" type="checkbox" />&nbsp;Morning</td>
+            <td id="row(afternoon)" style="background-color: rgba(255, 255, 159, 0.8);"><input id="afternoon" onchange="modcheck(this)" type="checkbox" />&nbsp;Afternoon</td>
           </tr>
         </table>
       </tr>
@@ -120,15 +120,15 @@
 %%% Data
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-disease("adolescent")
-disease("dermatology")
-disease("preventive")
-disease("sports")
-disease("travel")
-disease("urgent")
-disease("women")
-disease("mental")
-disease("nutrition")
+category("adolescent")
+category("dermatology")
+category("preventive")
+category("sports")
+category("travel")
+category("urgent")
+category("women")
+category("mental")
+category("nutrition")
 
 symptom(acne)
 symptom(diarrhea)
@@ -150,6 +150,7 @@ symptom(runnynose)
 symptom(shortbreath)
 symptom(skinirritation)
 symptom(throatpain)
+symptom(vertigo)
 
 categorySymptomSet("dermatology",[itch,skinirritation,acne],18)
 categorySymptomSet("dermatology",[itch,skinirritation],12)
@@ -227,6 +228,7 @@ doctorTime("RODDEN",afternoon)
 doctorTime("STOLL",afternoon)
 doctorTime("TEPPER",afternoon)
 doctorTime("VU-NGUYEN",afternoon)
+
 doctorPlace("COLLOFF",east)
 doctorPlace("CUA",west)
 doctorPlace("CURRY",east)
@@ -267,25 +269,25 @@ doctorFullName("MARTIN","Susanne Martin, MD")
 doctorFullName("PARK","Swon Park, RN")
 doctorFullName("GERSHON","Megan Gershon, RN")
 
-doctorDiseases("COLLOFF",["preventive"])
-doctorDiseases("CUA",["urgent","women"])
-doctorDiseases("CURRY",["adolescent","preventive"])
-doctorDiseases("DAWSON",["preventive","women"])
-doctorDiseases("FARID",["dermatology","preventive","women"])
-doctorDiseases("GERSHON",["nutrition","mental","preventive"])
-doctorDiseases("HONG",["adolescent"])
-doctorDiseases("KASTELEIN",["preventive","sports","women"])
-doctorDiseases("LAI",["preventive"])
-doctorDiseases("LOMMEL",["adolescent","women"])
-doctorDiseases("MARANIA",["sports"])
-doctorDiseases("MARTIN",["adolescent","sports","urgent"])
-doctorDiseases("PARK",["nutrition","preventive","sports"])
-doctorDiseases("PENDLEY",["preventive"])
-doctorDiseases("RICHARDS",["travel"])
-doctorDiseases("RODDEN",["preventive","sports","women"])
-doctorDiseases("STOLL",["adolescent","preventive","travel"])
-doctorDiseases("TEPPER",["adolescent","nutrition","women"])
-doctorDiseases("VU-NGUYEN",["adolescent","women"])
+doctorCats("COLLOFF",["preventive"])
+doctorCats("CUA",["urgent","women"])
+doctorCats("CURRY",["adolescent","preventive"])
+doctorCats("DAWSON",["preventive","women"])
+doctorCats("FARID",["dermatology","preventive","women"])
+doctorCats("GERSHON",["nutrition","mental","preventive"])
+doctorCats("HONG",["adolescent"])
+doctorCats("KASTELEIN",["preventive","sports","women"])
+doctorCats("LAI",["preventive"])
+doctorCats("LOMMEL",["adolescent","women"])
+doctorCats("MARANIA",["sports"])
+doctorCats("MARTIN",["adolescent","sports","urgent"])
+doctorCats("PARK",["nutrition","preventive","sports"])
+doctorCats("PENDLEY",["preventive"])
+doctorCats("RICHARDS",["travel"])
+doctorCats("RODDEN",["preventive","sports","women"])
+doctorCats("STOLL",["adolescent","preventive","travel"])
+doctorCats("TEPPER",["adolescent","nutrition","women"])
+doctorCats("VU-NGUYEN",["adolescent","women"])
 
 photo("Edwin Colloff, MD","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/ed_colloff_0_0.jpeg?h=9a223a1b&itok=cU1EsdFK")
 photo("Julie Richards, NP, CTH","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/julie_0_0.jpeg?h=804a83ea&itok=_NY7PAzn")
@@ -307,9 +309,11 @@ photo("Swon Park, RN","https://vaden.stanford.edu/sites/g/files/sbiybj20746/file
 photo("Megan Gershon, RN","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/stanford-person-default-profile-image.png?h=55541bb6&itok=nW2Kv8t1")
 photo("Karen Pendley, RN, BSN","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/stanford-person-default-profile-image.png?h=55541bb6&itok=nW2Kv8t1")
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Rules
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+time(morning)
+time(afternoon)
+place(east)
+place(west)
+
 </textarea>
 
 <textarea id="library" style="display:none;" type="text/hrf">
@@ -332,7 +336,7 @@ style(doctortab,visibility,hidden) :- ~value(showrecs,true)
 style(row(X),"background-color","rgba(255, 228, 242, 0.8)") :- bcolor(none,X)
 
 style(d(X),display,"table-row") :-
-  concern(X,Y) &
+  symptom(X) &
   value(X,true)
 
 style(d(X),display,none) :-
@@ -345,11 +349,11 @@ style(chart,display,"block") :-
 style(chart,display,none) :-
   ~value(showcats,true)
 
-style(locquestion, visibility, visible) :- value(askloc,true)
-style(locquestion, visibility, hidden) :- ~value(askloc,true)
+style(locquestion, display, "block") :- value(askloc,true)
+style(locquestion, display, none) :- ~value(askloc,true)
 
-style(timequestion, visibility, visible) :- value(asktime,true)
-style(timequestion, visibility, hidden) :- ~value(asktime,true)
+style(timequestion, display, "block") :- value(asktime,true)
+style(timequestion, display, none) :- ~value(asktime,true)
 
 innerhtml(u(X),V) :-
   symptom(X) &
@@ -364,26 +368,20 @@ satisfied(c1) :-
 
 first(X!Y,X)
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 req(c1)
-req(c2)
 
 style(R,color,red) :- req(R) & ~satisfied(R)
 style(R,color,black) :- req(R) & satisfied(R)
-
-value(units(X),1) :: symptom(X)
 
 select(X,true) :: ~value(X,false) & value(X,true) & addUserSymptom(X)
 select(X,false) :: ~value(X,true) & value(X,false) & delUserSymptom(X)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 leq(X,Y) :- evaluate(stringmin(X,Y),X)
 leqNum(X,Y) :- evaluate(min(X,Y),X)
 primitive(X) :- symptom(X)
-primitive(X) :- disease(X)
+primitive(X) :- category(X)
 list(nil)
 list(cons(X,Y)) :- object(X) &  list(Y)
 object(X) :- primitive(X)
@@ -415,53 +413,45 @@ addSymptom(X) :: symptom(X)
 addSymptomList(X!L) :: symptom(X)
 addSymptomList(X!L) :: evaluate(length(X!L), N) & leqNum(2,N) ==> addSymptomList(L)
 
-addDisease(X) :: disease(X)
-addDiseaseList(X!L) :: disease(X)
-addDiseaseList(X!L) :: evaluate(length(X!L), N) & leqNum(2,N) ==> addDiseaseList(L)
+addCat(X) :: category(X)
+addCatList(X!L) :: category(X)
+addCatList(X!L) :: evaluate(length(X!L), N) & leqNum(2,N) ==> addCatList(L)
 
 allSymptoms(Z) :- evaluate(setofall(X, symptom(X)), Y) & sorted(Y,Z)
-allDiseases(Z) :- evaluate(setofall(X, disease(X)), Y) & sorted(Y,Z)
+allDiseases(Z) :- evaluate(setofall(X, category(X)), Y) & sorted(Y,Z)
 allUserSymptoms(Z) :- evaluate(setofall(X, hasSymptom(X)), Y) & sorted(Y,Z)
 
-addSymSet(D, S, N) :: disease(D) & list(S) & sorted(S, S2) ==> categorySymptomSet(D,S2, N)
+addSymSet(D, S, N) :: category(D) & list(S) & sorted(S, S2) ==> categorySymptomSet(D,S2, N)
 
 addDoctor(X) :: doctor(X)
 addDoctorList(X!L) :: doctor(X)
 addDoctorList(X!L) :: evaluate(length(X!L), N) & leqNum(2,N) ==> addDoctorList(L)
-defineDocDiseases(D, L) :: doctor(D) & allDiseases(T) & subset(L, T) & sorted(L,S) ==> doctorDiseases(D,S)
-defineDocDiseases(D, L) :: doctorDiseases(D,S2) & doctor(D) & allDiseases(T) & subset(L, T) & sorted(L,S) & distinct(S,S2) ==> ~doctorDiseases(D,S2)
+defineDocDiseases(D, L) :: doctor(D) & allDiseases(T) & subset(L, T) & sorted(L,S) ==> doctorCats(D,S)
+defineDocDiseases(D, L) :: doctorCats(D,S2) & doctor(D) & allDiseases(T) & subset(L, T) & sorted(L,S) & distinct(S,S2) ==> ~doctorCats(D,S2)
 
-hasDisease(X) :- hasCategorySymptomSet(X, Z, N)
+hasCategory(X) :- hasCategorySymptomSet(X, Z, N)
 
-patientDiseases(L) :- evaluate(setofall(D, hasDisease(D)),K) & sorted(K,L)
+patientDiseases(L) :- evaluate(setofall(D, hasCategory(D)),K) & sorted(K,L)
 
-hasCategorySymptomSet(X, Z, N) :- disease(X) & categorySymptomSet(X, Z, N) & allUserSymptoms(S) & subset(Z, S)
+hasCategorySymptomSet(X, Z, N) :- category(X) & categorySymptomSet(X, Z, N) & allUserSymptoms(S) & subset(Z, S)
 
-hasDiseaseDanger(X, M) :- hasDisease(X) & evaluate(maximum(setofall(N, hasCategorySymptomSet(X, Z, N))),M)
+hasDiseaseDanger(X, M) :- hasCategory(X) & evaluate(maximum(setofall(N, hasCategorySymptomSet(X, Z, N))),M)
 
-patientDoctorOverlap(D, I) :- doctor(D) & doctorDiseases(D,S) & patientDiseases(L) & intersection(S,L,I)
+patientDoctorOverlap(D, I) :- doctor(D) & doctorCats(D,S) & patientDiseases(L) & intersection(S,L,I)
 
 doctorRelevance(D, N) :- patientDoctorOverlap(D, I) & evaluate(sum(setofall(M, member(X,I) & hasDiseaseDanger(X, M))), N)
 
 docFullRelevance(F,N) :- doctorFullName(D,F) & doctorRelevance(D, N)
 
-time(morning)
-time(afternoon)
-place(east)
-place(west)
-timePreference(T) :: time(T) ==> userPlace(T)
+userPlace(P) :- place(P) & value(P,true)
+userTime(T) :- time(T) & value(T,true)
+
+timePreference(T) :: time(T) ==> userTime(T)
 placePreference(P) :: place(P) ==> userPlace(P)
 
 filteredDoctorRelevance(D, N) :- doctorPlace(D,P) & doctorTime(D,T) & userPlace(P1) & userTime(T1) & same(P,P1) & same(T,T1) & doctorRelevance(D, N)
 
 filteredDocFullRelevance(F,N) :- doctorFullName(D,F) & filteredDoctorRelevance(D, N)
-
-time(morning)
-time(afternoon)
-place(east)
-place(west)
-timePreference(T) :: time(T) ==> userPlace(T)
-placePreference(P) :: place(P) ==> userPlace(P)
 
 maxRelevance(M) :- evaluate(maximum(setofall(N, docFullRelevance(F,N))),M)
 
