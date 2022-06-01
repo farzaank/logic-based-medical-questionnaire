@@ -30,17 +30,17 @@
       <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse; margin: 0px auto; font-family: HelveticaNeue-Light, &quot;Helvetica Neue&quot;, Helvetica, sans-serif;">
         <tbody>
           <tr>
-            <td id="row(gennutrition)" style="width: 25%; background-color: rgba(239, 72, 54, 0.298039);"><input id="gennutrition" onchange="modcheck(this)" type="checkbox" />&nbsp;General Nutrition</td>
-            <td id="row(eatdisorder)" style="width: 25%; background-color: rgba(34, 167, 240, 0.298039);"><input id="eatdisorder" onchange="modcheck(this)" type="checkbox" />&nbsp;Eating Disorder</td>
-            <td id="row(rash)" style="width: 25%; background-color: rgba(34, 167, 240, 0.298039);"><input id="rash" onchange="modcheck(this)" type="checkbox">&nbsp;Rash</td>
+            <td id="row(gennutrition)" style="width: 25%; background-color: rgba(255, 228, 242, 0.8);"><input id="gennutrition" onchange="modcheck(this)" type="checkbox" />&nbsp;General Nutrition</td>
+            <td id="row(eatdisorder)" style="width: 25%; background-color: rgba(255, 228, 242, 0.8);"><input id="eatdisorder" onchange="modcheck(this)" type="checkbox" />&nbsp;Eating Disorder</td>
+            <td id="row(rash)" style="width: 25%; background-color: rgba(255, 228, 242, 0.8);"><input id="rash" onchange="modcheck(this)" type="checkbox">&nbsp;Rash</td>
           </tr>
           <tr>
-            <td id="row(acne)" style="width: 25%; background-color: rgba(239, 72, 54, 0.298039);"><input id="acne" onchange="modcheck(this)" type="checkbox" />&nbsp;Acne</td>
-            <td id="row(genskin)" style="width: 25%; background-color: rgba(239, 72, 54, 0.298039);"><input id="genskin" onchange="modcheck(this)" type="checkbox" />&nbsp;Other skin</td>
-            <td id="row(fever)" style="width: 25%; background-color: rgba(239, 72, 54, 0.298039);"><input id="fever" onchange="modcheck(this)" type="checkbox" />&nbsp;Fever</td>
+            <td id="row(acne)" style="width: 25%; background-color: rgba(255, 228, 242, 0.8);"><input id="acne" onchange="modcheck(this)" type="checkbox" />&nbsp;Acne</td>
+            <td id="row(genskin)" style="width: 25%; background-color: rgba(255, 228, 242, 0.8);"><input id="genskin" onchange="modcheck(this)" type="checkbox" />&nbsp;Other skin</td>
+            <td id="row(fever)" style="width: 25%; background-color: rgba(255, 228, 242, 0.8);"><input id="fever" onchange="modcheck(this)" type="checkbox" />&nbsp;Fever</td>
           </tr>
           <tr>
-            <td id="row(anxiety)" style="background-color: rgba(34, 167, 240, 0.298039);"><input id="anxiety" onchange="modcheck(this)" type="checkbox" />&nbsp;Anxiety</td>
+            <td id="row(anxiety)" style="background-color: rgba(255, 228, 242, 0.8);"><input id="anxiety" onchange="modcheck(this)" type="checkbox" />&nbsp;Anxiety</td>
             <td id="row(depression)" style="background-color: rgba(255, 228, 242, 0.8);"><input id="depression" onchange="modcheck(this)" type="checkbox" />&nbsp;Depression</td>
             <td id="row(skinirritation)" style="background-color: rgba(255, 228, 242, 0.8);"><input id="skinirritation" onchange="modcheck(this)" type="checkbox" />&nbsp;Skin Irritation</td>
           </tr>
@@ -57,19 +57,31 @@
           </tr>
         </tbody>
       </table>
-      <!---
       <tr>
-      <td id="row(askloc)" style=""><input id="askloc" onchange="modcheck(this)" type="checkbox" />&nbsp;Do you have a location preference?</td>
-    </tr>
-    <tr>
-      <td id="row(asktime)" style=""><input id="asktime" onchange="modcheck(this)" type="checkbox" />&nbsp;Do you have a time preference?</td>
-    </tr>
-    --->
-      </td>
+        <td id="row(askloc)" style=""><input id="askloc" onchange="modcheck(this)" type="checkbox" />&nbsp;Do you have a location preference?</td>
+        <table id="locquestion" style="margin: 0px auto; width: 500px; visibility: hidden;">
+        <tr>
+            <td id="row(east)" style="background-color: rgba(255, 255, 159, 0.8);"><input id="east" onchange="modcheck(this)" type="checkbox" />&nbsp;East Campus</td>
+            <td id="row(west)" style="background-color: rgba(255, 255, 159, 0.8);"><input id="west" onchange="modcheck(this)" type="checkbox" />&nbsp;West Campus</td>
+          </tr>
+        </table>
+      </tr>
+      <table style="margin: 0px auto; width: 500px;">
+      <tr >
+        <td id="row(asktime)" ><input id="asktime" onchange="modcheck(this)" type="checkbox" />&nbsp;Do you have a time preference?</td>
+        <table id="timequestion" style="margin: 0px auto; width: 500px; visibility: hidden;">
+          <tr>
+            <td id="row(afternoon)" style="background-color: rgba(255, 255, 159, 0.8);"><input id="afternoon" onchange="modcheck(this)" type="checkbox" />&nbsp;Afternoon</td>
+            <td id="row(morning)" style="background-color: rgba(255, 255, 159, 0.8);"><input id="morning" onchange="modcheck(this)" type="checkbox" />&nbsp;Morning</td>
+          </tr>
+        </table>
+      </tr>
+      </table>
+    </td>
     </tr>
     <tr style="vertical-align: top;">
       <td colspan="4">
-      <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+      <table border="0" cellpadding="0" cellspacing="0" style="margin: 0px auto; width: 500px;">
         <tbody>
           <tr style="vertical-align: top;">
             <td>
@@ -79,7 +91,7 @@
           <tr>
             <td id="row(showrecs)" style="background-color: rgba(34, 167, 240, 0.298039);"><input id="showrecs" onchange="modcheck(this)" type="checkbox"/>&nbsp;Show care provider recommendations?</td>
           </tr>
-              <chart chart-line-color="white" class="chart" widget="chart" style="display: none;" chart-table="area" chart-type="pie" chart-title="Medical Categories" chart-y-axis-title="" chart-x-axis-title="" chart-color="" chart-data-range-labels="" chart-grid-lines="none" chart-legend="bottom" chart-line-width="" id="chart" ><canvas></canvas></chart>
+              <chart chart-line-color="white" class="chart" widget="chart" style="margin: 0px auto; width: 500px; display: none;" chart-table="area" chart-type="pie" chart-title="Medical Categories" chart-y-axis-title="" chart-x-axis-title="" chart-color="" chart-data-range-labels="" chart-grid-lines="none" chart-legend="bottom" chart-line-width="" id="chart" ><canvas></canvas></chart>
             </td>          <td>
               <table class="sortable" table border="0" cellpadding="0" cellspacing="0" type='table' id="doctortab" style="width: 200px; font-family: HelveticaNeue-Light, 'Helvetica Neue', Helvetica, sans-serif; margin: 0px auto; text-align: center; visibility: hidden;">
                 <thead>
@@ -118,6 +130,7 @@ disease("women")
 disease("mental")
 disease("nutrition")
 
+symptom(acne)
 symptom(diarrhea)
 symptom(wheeze)
 symptom(gennutrition)
@@ -138,77 +151,42 @@ symptom(shortbreath)
 symptom(skinirritation)
 symptom(throatpain)
 
-value(units(diarrhea),3)
-value(units(wheeze),3)
-value(units(abdominalpain),3)
-value(units(chestpain),3)
-value(units(skinirritation),3)
-value(units(depression),3)
-value(units(vertigo),3)
-value(units(jointpain),3)
-
-concern(diarrhea,"nutrition")
-concern(jointpain,"nutrition")
-concern(wheeze,"urgent")
-concern(gennutrition,"nutrition")
-concern(eatdisorder,"nutrition")
-concern(rash,"dermatology")
-concern(acne,"dermatology")
-concern(genskin,"dermatology")
-concern(sinjury,"sports")
-concern(sperformance,"sports")
-concern(fever,"urgent")
-concern(depression,"mental")
-concern(anxiety,"mental")
-concern(itch,"dermatology")
-concern(skinirritation,"dermatology")
-concern(headache,"urgent")
-concern(vertigo,"urgent")
-concern(joint,"sports")
-concern(chestpain,"urgent")
-concern(palpitations,"urgent")
-
-value(units(gennutrition),3)
-value(units(eatdisorder),3)
-value(units(depression),3)
-value(units(rash),3)
-value(units(acne),3)
-value(units(fever),3)
-value(units(genskin),3)
-value(units(sinjury),3)
-value(units(sperformance),3)
-value(units(depression),3)
-value(units(anxiety),3)
-value(units(itch),3)
-value(units(skinirritation),3)
-value(units(headache),3)
-value(units(vertigo),3)
-value(units(joint),3)
-value(units(chestpain),3)
-value(units(palpitations),3)
-
-
-bcolor(none,gennutrition)
-bcolor(none,depression)
-bcolor(none,rash)
-bcolor(none,acne)
-bcolor(none,fever)
-bcolor(none,genskin)
-bcolor(none,sperformance)
-bcolor(none,sinjury)
-bcolor(none,eatdisorder)
-bcolor(none,anxiety)
-
-bcolor(none,gennutrition)
-bcolor(none,depression)
-bcolor(none,rash)
-bcolor(none,acne)
-bcolor(none,fever)
-bcolor(none,genskin)
-bcolor(none,sperformance)
-bcolor(none,sinjury)
-bcolor(none,eatdisorder)
-bcolor(none,anxiety)
+categorySymptomSet("dermatology",[itch,skinirritation,acne],18)
+categorySymptomSet("dermatology",[itch,skinirritation],12)
+categorySymptomSet("dermatology",[itch],5)
+categorySymptomSet("dermatology",[acne],5)
+categorySymptomSet("dermatology",[skinirritation],5)
+categorySymptomSet("adolescent",[itch,skinirritation],6)
+categorySymptomSet("adolescent",[itch],2)
+categorySymptomSet("adolescent",[skinirritation],3)
+categorySymptomSet("sports",[headache,vertigo],10)
+categorySymptomSet("sports",[headache],2)
+categorySymptomSet("sports",[jointpain],5)
+categorySymptomSet("sports",[vertigo],2)
+categorySymptomSet("sports",[abdominalpain],4)
+categorySymptomSet("sports",[abdominalpain,jointpain],8)
+categorySymptomSet("urgent",[chestpain,headache,palpitations],100)
+categorySymptomSet("urgent",[chestpain,shortbreath,wheeze],50)
+categorySymptomSet("urgent",[chestpain,shortbreath],25)
+categorySymptomSet("urgent",[chestpain,palpitations],15)
+categorySymptomSet("urgent",[chestpain],4)
+categorySymptomSet("urgent",[palpitations],5)
+categorySymptomSet("preventive",[chestpain,headache,palpitations],100)
+categorySymptomSet("preventive",[chestpain,palpitations,shortbreath],15)
+categorySymptomSet("preventive",[chestpain],8)
+categorySymptomSet("preventive",[palpitations],8)
+categorySymptomSet("preventive",[abdominalpain],8)
+categorySymptomSet("preventive",[shortbreath],8)
+categorySymptomSet("preventive",[runnynose],8)
+categorySymptomSet("preventive",[throatpain],8)
+categorySymptomSet("preventive",[wheeze],8)
+categorySymptomSet("mental",[depression],10)
+categorySymptomSet("mental",[anxiety],10)
+categorySymptomSet("mental",[anxiety,depression],20)
+categorySymptomSet("nutrition",[gennutrition],10)
+categorySymptomSet("nutrition",[jointpain],4)
+categorySymptomSet("nutrition",[diarrhea],6)
+categorySymptomSet("nutrition",[diarrhea,jointpain],9)
 
 doctor("COLLOFF")
 doctor("CUA")
@@ -229,6 +207,7 @@ doctor("RODDEN")
 doctor("STOLL")
 doctor("TEPPER")
 doctor("VU-NGUYEN")
+
 doctorTime("COLLOFF",morning)
 doctorTime("CUA",morning)
 doctorTime("CURRY",morning)
@@ -267,41 +246,6 @@ doctorPlace("RODDEN",west)
 doctorPlace("STOLL",east)
 doctorPlace("TEPPER",west)
 doctorPlace("VU-NGUYEN",east)
-
-diseaseSymptomSet("dermatology",[itch,skinirritation],12)
-diseaseSymptomSet("dermatology",[itch],5)
-diseaseSymptomSet("dermatology",[skinirritation],5)
-diseaseSymptomSet("adolescent",[itch,skinirritation],6)
-diseaseSymptomSet("adolescent",[itch],2)
-diseaseSymptomSet("adolescent",[skinirritation],3)
-diseaseSymptomSet("sports",[headache,vertigo],10)
-diseaseSymptomSet("sports",[headache],2)
-diseaseSymptomSet("sports",[jointpain],5)
-diseaseSymptomSet("sports",[vertigo],2)
-diseaseSymptomSet("sports",[abdominalpain],4)
-diseaseSymptomSet("sports",[abdominalpain,jointpain],8)
-diseaseSymptomSet("urgent",[chestpain,headache,palpitations],100)
-diseaseSymptomSet("urgent",[chestpain,shortbreath,wheeze],50)
-diseaseSymptomSet("urgent",[chestpain,shortbreath],25)
-diseaseSymptomSet("urgent",[chestpain,palpitations],15)
-diseaseSymptomSet("urgent",[chestpain],4)
-diseaseSymptomSet("urgent",[palpitations],5)
-diseaseSymptomSet("preventive",[chestpain,headache,palpitations],100)
-diseaseSymptomSet("preventive",[chestpain,palpitations,shortbreath],15)
-diseaseSymptomSet("preventive",[chestpain],8)
-diseaseSymptomSet("preventive",[palpitations],8)
-diseaseSymptomSet("preventive",[abdominalpain],8)
-diseaseSymptomSet("preventive",[shortbreath],8)
-diseaseSymptomSet("preventive",[runnynose],8)
-diseaseSymptomSet("preventive",[throatpain],8)
-diseaseSymptomSet("preventive",[wheeze],8)
-diseaseSymptomSet("mental",[depression],10)
-diseaseSymptomSet("mental",[anxiety],10)
-diseaseSymptomSet("mental",[anxiety,depression],20)
-diseaseSymptomSet("nutrition",[gennutrition],10)
-diseaseSymptomSet("nutrition",[jointpain],4)
-diseaseSymptomSet("nutrition",[diarrhea],6)
-diseaseSymptomSet("nutrition",[diarrhea,jointpain],9)
 
 doctorFullName("PENDLEY","Karen Pendley, RN, BSN")
 doctorFullName("COLLOFF","Edwin Colloff, MD")
@@ -343,30 +287,6 @@ doctorDiseases("STOLL",["adolescent","preventive","travel"])
 doctorDiseases("TEPPER",["adolescent","nutrition","women"])
 doctorDiseases("VU-NGUYEN",["adolescent","women"])
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Rules
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-</textarea>
-
-<textarea id="library" style="display:none;" type="text/hrf">
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Rules
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-area(AREA,N) :- hasDiseaseDanger(AREA, N)
-
-rows(doctortab,L) :- setofall(doctortab(T,N),doctortab(T,N),L)
-
-
-doctorOLD(T,N) :-
-  treats(DOCTOR,X) &
-  countofall(TAG,treats(DOCTOR,TAG)&value(TAG,true),N) &
-  min(N,1,1) &
-  photo(DOCTOR,PHOTO) &
-  stringappend("<img src=&#39;",PHOTO,"&#39; width=&#39;70&#39; height=&#39;70&#39; title=&#39;",DOCTOR,"&#39;/>",T)
-
 photo("Edwin Colloff, MD","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/ed_colloff_0_0.jpeg?h=9a223a1b&itok=cU1EsdFK")
 photo("Julie Richards, NP, CTH","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/julie_0_0.jpeg?h=804a83ea&itok=_NY7PAzn")
 photo("Nancy Stoll, RN, MS, BC","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/nancy_0_0.jpeg?h=92748315&itok=da5q70R5")
@@ -386,6 +306,20 @@ photo("Susanne Martin, MD","https://vaden.stanford.edu/sites/g/files/sbiybj20746
 photo("Swon Park, RN","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/stanford-person-default-profile-image.png?h=55541bb6&itok=nW2Kv8t1")
 photo("Megan Gershon, RN","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/stanford-person-default-profile-image.png?h=55541bb6&itok=nW2Kv8t1")
 photo("Karen Pendley, RN, BSN","https://vaden.stanford.edu/sites/g/files/sbiybj20746/files/styles/medium_square/public/media/image/stanford-person-default-profile-image.png?h=55541bb6&itok=nW2Kv8t1")
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Rules
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+</textarea>
+
+<textarea id="library" style="display:none;" type="text/hrf">
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Rules
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+area(AREA,N) :- hasDiseaseDanger(AREA, N)
+
+rows(doctortab,L) :- setofall(doctortab(T,N),doctortab(T,N),L)
 
 doctortab(T,N) :-
   photo(DOCTOR,PHOTO) &
@@ -409,38 +343,36 @@ style(chart,display,"block") :-
   value(showcats,true)
 
 style(chart,display,none) :-
-  ~value(showcats,true) 
+  ~value(showcats,true)
+
+style(locquestion, visibility, visible) :- value(askloc,true)
+style(locquestion, visibility, hidden) :- ~value(askloc,true)
+
+style(timequestion, visibility, visible) :- value(asktime,true)
+style(timequestion, visibility, hidden) :- ~value(asktime,true)
 
 innerhtml(u(X),V) :-
-  concern(X,Y) &
+  symptom(X) &
   value(X,true) &
   value(units(X),V)
-
-totalunits(T) :- 
-  setofall([V,X,Y],
-    teaches(Y,X) & 
-    value(X,true) & 
-    value(units(X),V), S) &
-  map(first,S,L) &
-  sum(L,T)
 
 innerhtml(t,T) :- totalunits(T)
 
 satisfied(c1) :-
-  countofall([X,Y], teaches(Y,X) & value(X,true), C) &
-  min(C,6,6)
+  countofall([X], symptom(X) & value(X,true), C) &
+  min(C,1,1)
 
 first(X!Y,X)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-style(R,color,red) :- req(R) & ~satisfied(R)
-style(R,color,black) :- req(R) & satisfied(R)
-
 req(c1)
 req(c2)
 
-value(units(X),1) :: concern(X)
+style(R,color,red) :- req(R) & ~satisfied(R)
+style(R,color,black) :- req(R) & satisfied(R)
+
+value(units(X),1) :: symptom(X)
 
 select(X,true) :: ~value(X,false) & value(X,true) & addUserSymptom(X)
 select(X,false) :: ~value(X,true) & value(X,false) & delUserSymptom(X)
@@ -465,7 +397,6 @@ subset(X!L,Y) :- mem(X,Y) & subset(L,Y)
 intersection(nil,Y,nil) :- list(Y)
 intersection(X!L,Y,X!Z) :- mem(X,Y) & intersection(L,Y,Z)
 intersection(X!L,Y,Z) :- ~mem(X,Y) & intersection(L,Y,Z)
-
 
 minTemp(C,[])
 minTemp(C, M!X) :- evaluate(stringmin(C,M),C) & minTemp(C,X)
@@ -492,7 +423,7 @@ allSymptoms(Z) :- evaluate(setofall(X, symptom(X)), Y) & sorted(Y,Z)
 allDiseases(Z) :- evaluate(setofall(X, disease(X)), Y) & sorted(Y,Z)
 allUserSymptoms(Z) :- evaluate(setofall(X, hasSymptom(X)), Y) & sorted(Y,Z)
 
-addSymSet(D, S, N) :: disease(D) & list(S) & sorted(S, S2) ==> diseaseSymptomSet(D,S2, N)
+addSymSet(D, S, N) :: disease(D) & list(S) & sorted(S, S2) ==> categorySymptomSet(D,S2, N)
 
 addDoctor(X) :: doctor(X)
 addDoctorList(X!L) :: doctor(X)
@@ -500,13 +431,13 @@ addDoctorList(X!L) :: evaluate(length(X!L), N) & leqNum(2,N) ==> addDoctorList(L
 defineDocDiseases(D, L) :: doctor(D) & allDiseases(T) & subset(L, T) & sorted(L,S) ==> doctorDiseases(D,S)
 defineDocDiseases(D, L) :: doctorDiseases(D,S2) & doctor(D) & allDiseases(T) & subset(L, T) & sorted(L,S) & distinct(S,S2) ==> ~doctorDiseases(D,S2)
 
-hasDisease(X) :- hasDiseaseSymptomSet(X, Z, N)
+hasDisease(X) :- hasCategorySymptomSet(X, Z, N)
 
 patientDiseases(L) :- evaluate(setofall(D, hasDisease(D)),K) & sorted(K,L)
 
-hasDiseaseSymptomSet(X, Z, N) :- disease(X) & diseaseSymptomSet(X, Z, N) & allUserSymptoms(S) & subset(Z, S)
+hasCategorySymptomSet(X, Z, N) :- disease(X) & categorySymptomSet(X, Z, N) & allUserSymptoms(S) & subset(Z, S)
 
-hasDiseaseDanger(X, M) :- hasDisease(X) & evaluate(maximum(setofall(N, hasDiseaseSymptomSet(X, Z, N))),M)
+hasDiseaseDanger(X, M) :- hasDisease(X) & evaluate(maximum(setofall(N, hasCategorySymptomSet(X, Z, N))),M)
 
 patientDoctorOverlap(D, I) :- doctor(D) & doctorDiseases(D,S) & patientDiseases(L) & intersection(S,L,I)
 
@@ -521,11 +452,9 @@ place(west)
 timePreference(T) :: time(T) ==> userPlace(T)
 placePreference(P) :: place(P) ==> userPlace(P)
 
-
 filteredDoctorRelevance(D, N) :- doctorPlace(D,P) & doctorTime(D,T) & userPlace(P1) & userTime(T1) & same(P,P1) & same(T,T1) & doctorRelevance(D, N)
 
 filteredDocFullRelevance(F,N) :- doctorFullName(D,F) & filteredDoctorRelevance(D, N)
-
 
 time(morning)
 time(afternoon)
@@ -541,6 +470,7 @@ multFactor(N) :- maxRelevance(M) & evaluate(quotient(round(times(quotient(5,M),1
 normalizedDocRelevance(F,N) :- multFactor(M) & docFullRelevance(F,K) & evaluate(round(times(K,M)),N)
 
 filteredNormalizedDoctorRelevance(F, N) :- doctorFullName(D,F) & doctorPlace(D,P) & doctorTime(D,T) & userPlace(P1) & userTime(T1) & same(P,P1) & same(T,T1) & normalizedDocRelevance(F, N)
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
