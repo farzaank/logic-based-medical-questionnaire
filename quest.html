@@ -108,11 +108,13 @@
           </tr>
               <chart chart-line-color="white" class="chart" widget="chart" style="margin: 0px auto; width: 500px; display: none;" chart-table="area" chart-type="pie" chart-title="Medical Categories" chart-y-axis-title="" chart-x-axis-title="" chart-color="" chart-data-range-labels="" chart-grid-lines="none" chart-legend="bottom" chart-line-width="" id="chart" ><canvas></canvas></chart>
             </td>          <td>
-              <table class="sortable" table border="0" cellpadding="0" cellspacing="0" type='table' id="doctortab" style="width: 200px; font-family: HelveticaNeue-Light, 'Helvetica Neue', Helvetica, sans-serif; margin: 0px auto; text-align: center; visibility: hidden;">
+              <table class="sortable" table border="0" cellpadding="0" cellspacing="0" type='table' id="doctortab" style="width: 500px; font-family: HelveticaNeue-Light, 'Helvetica Neue', Helvetica, sans-serif; margin: 0px auto; text-align: center; visibility: hidden;">
                 <thead>
                   <tr>
-                    <th displaystyle="stringfield">Doctor</th>
-                    <th>Relevance</th>
+                    <th displaystyle="stringfield"> </th>
+                    <th displaystyle="stringfield" > Clinician  </th>
+                    <th displaystyle="stringfield"> Relevance</th>
+                    <th> Specialties</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -348,11 +350,13 @@ place(west)
 
 area(AREA,N) :- hasDiseaseDanger(AREA, N)
 
-rows(doctortab,L) :- setofall(doctortab(T,N),doctortab(T,N),L)
+rows(doctortab,L) :- setofall(doctortab(T,DOCTOR,N,M),doctortab(T,DOCTOR,N,M),L)
 
-doctortab(T,N) :-
+doctortab(T,DOCTOR,N,M) :-
   photo(DOCTOR,PHOTO) &
   normalizedDocRelevance(DOCTOR,N) &
+  doctorFullName(LAST,DOCTOR) & 
+  doctorCats(LAST,M) & 
   stringappend("<img src=&#39;",PHOTO,"&#39; width=&#39;70&#39; height=&#39;70&#39; title=&#39;",DOCTOR,"&#39;/>",T)
 
 style(doctortab,visibility,visible) :- value(showrecs,true)
