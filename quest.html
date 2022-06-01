@@ -7,13 +7,13 @@
   <script src="http://epilog.stanford.edu//epilog/javascript/epilog.js"></script>
   <script src="http://epilog.stanford.edu//worksheets/javascript/worksheets.js"></script>
         <script src="http://epilog.stanford.edu//worksheets/widgets/charts.js"></script></head>
-<body onload="initialize()">
-<table class="content-center" style="margin: 0px auto; width: 500px;">
+<body onload="initialize()" style="background-color: rgb(251,251,249)">
+<table class="content-center" style="margin: 0px auto; width: 500;">
   <tbody>
 
     <tr>
       
-    <td colspan="4"><a href="https://vaden.stanford.edu/"><img src="header.png" alt="Vaden Health Services" width="375" height="50" style="margin: 0px auto;"></a>
+    <td colspan="4"><a href="https://vaden.stanford.edu/"><img src="https://stanfordreview.org/content/images/caps.png" alt="Vaden Health Services" width="375" height="48" style="margin: 0px auto;"></a>
     </tr>
     <tr>
       <td colspan="4"><span style="font-size:20px;"><strong>&nbsp;Clinician Recommendation Form&nbsp;</strong>
@@ -31,13 +31,13 @@
         <tbody>
           <tr>
             <td id="row(gennutrition)" style="width: 25%; background-color: rgba(255, 228, 242, 0.8);"><input id="gennutrition" onchange="modcheck(this)" type="checkbox" />&nbsp;General Nutrition</td>
-            <td id="row(eatdisorder)" style="width: 25%; background-color: rgba(255, 228, 242, 0.8);"><input id="eatdisorder" onchange="modcheck(this)" type="checkbox" />&nbsp;Eating Disorder</td>
-            <td id="row(rash)" style="width: 25%; background-color: rgba(255, 228, 242, 0.8);"><input id="rash" onchange="modcheck(this)" type="checkbox">&nbsp;Rash</td>
+            <td id="row(eatingdisorder)" style="width: 25%; background-color: rgba(255, 228, 242, 0.8);"><input id="eatingdisorder" onchange="modcheck(this)" type="checkbox" />&nbsp;Eating Disorder</td>
+            <td id="row(fever)" style="width: 25%; background-color: rgba(255, 228, 242, 0.8);"><input id="fever" onchange="modcheck(this)" type="checkbox" />&nbsp;Fever</td>
           </tr>
           <tr>
             <td id="row(acne)" style="width: 25%; background-color: rgba(255, 228, 242, 0.8);"><input id="acne" onchange="modcheck(this)" type="checkbox" />&nbsp;Acne</td>
             <td id="row(genskin)" style="width: 25%; background-color: rgba(255, 228, 242, 0.8);"><input id="genskin" onchange="modcheck(this)" type="checkbox" />&nbsp;Other skin</td>
-            <td id="row(fever)" style="width: 25%; background-color: rgba(255, 228, 242, 0.8);"><input id="fever" onchange="modcheck(this)" type="checkbox" />&nbsp;Fever</td>
+            <td id="row(rash)" style="width: 25%; background-color: rgba(255, 228, 242, 0.8);"><input id="rash" onchange="modcheck(this)" type="checkbox">&nbsp;Rash</td>
           </tr>
           <tr>
             <td id="row(anxiety)" style="background-color: rgba(255, 228, 242, 0.8);"><input id="anxiety" onchange="modcheck(this)" type="checkbox" />&nbsp;Anxiety</td>
@@ -55,8 +55,18 @@
             <td id="row(vertigo)" style="background-color: rgba(255, 228, 242, 0.8);"><input id="vertigo" onchange="modcheck(this)" type="checkbox" />&nbsp;Vertigo</td>
             <td id="row(headache)" style="background-color: rgba(255, 228, 242, 0.8);"><input id="headache" onchange="modcheck(this)" type="checkbox" />&nbsp;Headache</td>
           </tr>
+
+          <tr>
+            <td id="row(abdominalpain)" style="background-color: rgba(255, 228, 242, 0.8);"><input id="abdominalpain" onchange="modcheck(this)" type="checkbox" />&nbsp;Abdominal Pain</td>
+            <td id="row(chestpain)" style="background-color: rgba(255, 228, 242, 0.8);"><input id="chestpain" onchange="modcheck(this)" type="checkbox" />&nbsp;Chest Pain</td>
+            <td id="row(throatpain)" style="background-color: rgba(255, 228, 242, 0.8);"><input id="throatpain" onchange="modcheck(this)" type="checkbox" />&nbsp;Throat Pain</td>
+          </tr>
         </tbody>
       </table>
+
+    <tr>
+      <td colspan="4"><span style="font-size:15px;"><strong>&nbsp;Optional Questions&nbsp;</strong>
+    </tr>
       <tr>
         <td id="row(askloc)" style=""><input id="askloc" onchange="modcheck(this)" type="checkbox" />&nbsp;Do you have a location preference?</td>
         <table id="locquestion" style="margin: 0px auto; width: 500px; display: none;">
@@ -79,6 +89,11 @@
       </table>
     </td>
     </tr>
+      <table style="margin: 0px auto; width: 500px;">
+    <tr>
+      <td colspan="4"><span style="font-size:15px;"><strong>&nbsp;Results&nbsp;</strong>
+    </tr>
+  </table>
     <tr style="vertical-align: top;">
       <td colspan="4">
       <table border="0" cellpadding="0" cellspacing="0" style="margin: 0px auto; width: 500px;">
@@ -131,9 +146,13 @@ category("mental")
 category("nutrition")
 
 symptom(acne)
+symptom(rash)
 symptom(diarrhea)
 symptom(wheeze)
 symptom(gennutrition)
+symptom(eatingdisorder)
+symptom(fever)
+symptom(genskin)
 symptom(anxiety)
 symptom(abdominalpain)
 symptom(chestpain)
@@ -144,7 +163,6 @@ symptom(headache)
 symptom(heartburn)
 symptom(itch)
 symptom(jointpain)
-symptom(lossofsmell)
 symptom(palpitations)
 symptom(runnynose)
 symptom(shortbreath)
@@ -152,10 +170,14 @@ symptom(skinirritation)
 symptom(throatpain)
 symptom(vertigo)
 
+categorySymptomSet("dermatology",[itch,skinirritation,genskin],50)
+categorySymptomSet("dermatology",[itch,skinirritation,acne,genskin],100)
 categorySymptomSet("dermatology",[itch,skinirritation,acne],18)
 categorySymptomSet("dermatology",[itch,skinirritation],12)
 categorySymptomSet("dermatology",[itch],5)
+categorySymptomSet("dermatology",[rash],5)
 categorySymptomSet("dermatology",[acne],5)
+categorySymptomSet("dermatology",[genskin],5)
 categorySymptomSet("dermatology",[skinirritation],5)
 categorySymptomSet("adolescent",[itch,skinirritation],6)
 categorySymptomSet("adolescent",[itch],2)
@@ -171,7 +193,9 @@ categorySymptomSet("urgent",[chestpain,shortbreath,wheeze],50)
 categorySymptomSet("urgent",[chestpain,shortbreath],25)
 categorySymptomSet("urgent",[chestpain,palpitations],15)
 categorySymptomSet("urgent",[chestpain],4)
+categorySymptomSet("urgent",[fever],5)
 categorySymptomSet("urgent",[palpitations],5)
+categorySymptomSet("urgent",[wheeze],8)
 categorySymptomSet("preventive",[chestpain,headache,palpitations],100)
 categorySymptomSet("preventive",[chestpain,palpitations,shortbreath],15)
 categorySymptomSet("preventive",[chestpain],8)
@@ -180,13 +204,14 @@ categorySymptomSet("preventive",[abdominalpain],8)
 categorySymptomSet("preventive",[shortbreath],8)
 categorySymptomSet("preventive",[runnynose],8)
 categorySymptomSet("preventive",[throatpain],8)
-categorySymptomSet("preventive",[wheeze],8)
 categorySymptomSet("mental",[depression],10)
 categorySymptomSet("mental",[anxiety],10)
+categorySymptomSet("mental",[eatingdisorder],5)
 categorySymptomSet("mental",[anxiety,depression],20)
 categorySymptomSet("nutrition",[gennutrition],10)
 categorySymptomSet("nutrition",[jointpain],4)
 categorySymptomSet("nutrition",[diarrhea],6)
+categorySymptomSet("nutrition",[eatingdisorder],8)
 categorySymptomSet("nutrition",[diarrhea,jointpain],9)
 
 doctor("COLLOFF")
